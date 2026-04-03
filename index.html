@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Facet Configuration, Echolink Solutions Training Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a3e;
+  --navy2:#16213e;
+  --navy3:#0f2460;
+  --orange:#e8521a;
+  --orange2:#f07040;
+  --orange-light:#fef0eb;
+  --cream:#fdfaf5;
+  --cream2:#f5f0e8;
+  --text:#0d0d1a;
+  --text2:#1c1c2e;
+  --muted:#3a4558;
+  --faint:#6a7488;
+  --border:#d0cac0;
+  --border2:#e8e3da;
+  --white:#ffffff;
+  --success:#044d38;
+  --success-bg:#c6f6d5;
+  --warn:#7a3500;
+  --warn-bg:#fef3c7;
+  --danger:#7a1212;
+  --danger-bg:#fee2e2;
+  --info:#102060;
+  --info-bg:#dbeafe;
+  --radius:6px;
+  --radius-lg:12px;
+  --shadow:0 2px 8px rgba(0,0,0,0.09);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.13);
+  --mono:'Source Code Pro',monospace;
+  --body:'Source Sans 3',-apple-system,sans-serif;
+  --display:'Playfair Display',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-size:15.5px;line-height:1.85;color:var(--text2);background:var(--cream);min-height:100vh;font-weight:400}
+b,strong{font-weight:700;color:var(--text)}
+
+/* HEADER */
+.site-header{background:var(--navy);padding:0 1.75rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;border-bottom:3px solid var(--orange)}
+.header-brand{display:flex;align-items:center;gap:14px}
+.header-logo-img{height:44px;width:auto;display:block;border-radius:6px}
+.header-divider{width:1px;height:32px;background:rgba(255,255,255,.2)}
+.header-text .tagline{font-size:11.5px;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.header-text .book-title{font-size:13.5px;color:rgba(255,255,255,.88);font-weight:700}
+.header-right{font-size:12px;color:rgba(255,255,255,.4);text-align:right;line-height:1.6}
+.header-right a{color:var(--orange2);text-decoration:none}
+
+/* LAYOUT */
+.layout{display:flex;min-height:calc(100vh - 64px)}
+
+/* SIDEBAR */
+.sidebar{width:258px;flex-shrink:0;background:var(--navy2);padding:1.25rem 0;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
+.sidebar-section-label{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.75rem 1.25rem .3rem;margin-top:.35rem}
+.sidebar a{display:block;padding:.48rem 1.25rem;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.52);text-decoration:none;border-left:3px solid transparent;transition:all .15s;line-height:1.45}
+.sidebar a:hover{background:rgba(232,82,26,.12);color:var(--orange2);border-left-color:var(--orange)}
+.sidebar a.active{background:rgba(232,82,26,.18);color:white;border-left-color:var(--orange2);font-weight:700}
+.sidebar a .ch-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.25);display:block;margin-bottom:1px}
+.sidebar a.active .ch-label{color:var(--orange2)}
+
+/* MAIN */
+.main{flex:1;padding:2.25rem 2.75rem 5rem;max-width:880px}
+
+/* HERO - only shown in intro */
+.book-hero{background:var(--navy);border-radius:var(--radius-lg);margin-bottom:2.5rem;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero-top{background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);padding:2.25rem 2.5rem;position:relative}
+.hero-top::after{content:'';position:absolute;top:0;right:0;bottom:0;width:40%;background:linear-gradient(135deg,transparent,rgba(232,82,26,.06));pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange2);margin-bottom:.6rem}
+.book-hero h1{font-family:var(--display);font-size:34px;font-weight:900;color:white;line-height:1.2;margin-bottom:.65rem}
+.book-hero .subtitle{font-size:14.5px;color:rgba(255,255,255,.72);line-height:1.7;max-width:560px;font-weight:400}
+.hero-bottom{background:rgba(0,0,0,.38);padding:1rem 2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.08)}
+.hero-meta-item{font-size:12px;color:rgba(255,255,255,.42)}
+.hero-meta-item strong{color:var(--orange2);display:block;font-size:13.5px;font-weight:700}
+.hero-logo-area{display:flex;align-items:center;gap:10px;margin-right:auto}
+.hero-logo-area img{height:44px;border-radius:6px}
+
+/* PAGES */
+.page{display:none}
+.page.visible{display:block}
+
+/* CHAPTER HEADER */
+.ch-header{display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:2px solid var(--border2)}
+.ch-num-block{background:var(--orange);color:white;font-family:var(--display);font-size:22px;font-weight:900;min-width:54px;height:54px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ch-meta .ch-label-top{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.ch-meta .ch-title{font-family:var(--display);font-size:26px;font-weight:900;color:var(--navy);line-height:1.25}
+
+/* BODY */
+.body-text p{margin-bottom:1.15rem;color:var(--text2);font-weight:400}
+.body-text h3{font-family:var(--display);font-size:18px;font-weight:900;color:var(--navy);margin:2.25rem 0 .65rem;padding-left:1rem;border-left:4px solid var(--orange)}
+.body-text h4{font-size:13.5px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin:1.75rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border2)}
+.body-text ul{margin:.5rem 0 1rem 1.5rem}
+.body-text ul li{margin-bottom:.4rem;color:var(--text2);line-height:1.7}
+.body-text ol{margin:.5rem 0 1rem 1.5rem}
+.body-text ol li{margin-bottom:.4rem;color:var(--text2);line-height:1.7}
+
+/* CALLOUTS */
+.callout{border-left:4px solid var(--orange);background:var(--orange-light);color:#5a1e05;padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1.5rem 0;font-size:14px;line-height:1.75;font-weight:400}
+.callout-info{border-left:4px solid #2563eb;background:var(--info-bg);color:var(--info);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1.5rem 0;font-size:14px;line-height:1.75;font-weight:400}
+.callout-warn{border-left:4px solid #c97706;background:var(--warn-bg);color:var(--warn);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1.5rem 0;font-size:14px;line-height:1.75;font-weight:400}
+.callout-success{border-left:4px solid #059669;background:var(--success-bg);color:var(--success);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1.5rem 0;font-size:14px;line-height:1.75;font-weight:400}
+.callout-danger{border-left:4px solid #dc2626;background:var(--danger-bg);color:var(--danger);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1.5rem 0;font-size:14px;line-height:1.75;font-weight:400}
+.callout strong,.callout-info strong,.callout-warn strong,.callout-success strong,.callout-danger strong{display:block;margin-bottom:.3rem;font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:900}
+
+/* CODE */
+.code-block{background:#0d1117;color:#e6edf3;border-radius:var(--radius);padding:1.1rem 1.4rem;font-family:var(--mono);font-size:12.5px;line-height:1.75;margin:1.1rem 0;overflow-x:auto;border:1px solid #30363d}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:1.25rem 0;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead tr{background:var(--navy)}
+th{text-align:left;padding:11px 13px;color:white;font-weight:900;font-size:12px;letter-spacing:.05em}
+td{padding:9px 13px;border-bottom:1px solid var(--border2);color:var(--text2);vertical-align:top;font-weight:400}
+tr:nth-child(even) td{background:rgba(0,0,0,.018)}
+tr:last-child td{border-bottom:none}
+
+/* TAGS */
+.tag{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:20px}
+.tag-red{background:var(--danger-bg);color:var(--danger)}
+.tag-amber{background:var(--warn-bg);color:var(--warn)}
+.tag-green{background:var(--success-bg);color:var(--success)}
+.tag-blue{background:var(--info-bg);color:var(--info)}
+
+/* FIGURES */
+.figure{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:1.75rem 0;box-shadow:var(--shadow-md)}
+.figure-caption{background:var(--navy);color:white;padding:.65rem 1.25rem;font-size:12px;font-weight:900;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.figure-caption .badge{background:var(--orange);color:white;font-size:10px;font-weight:900;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em}
+.figure-body{padding:1rem 1.25rem}
+
+/* MOCKUPS */
+.software-mock{background:#f0f4f8;border-radius:4px;overflow:hidden;font-size:12px}
+.mock-titlebar{background:#2d3748;padding:7px 12px;display:flex;align-items:center;gap:6px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-dot.red{background:#fc5c65}.mock-dot.yellow{background:#fed330}.mock-dot.green{background:#26de81}
+.mock-title{font-size:11px;color:rgba(255,255,255,.55);margin-left:8px;font-weight:600}
+.mock-toolbar{background:#1a1a3e;padding:5px 10px;display:flex;gap:3px;flex-wrap:wrap}
+.mock-tb-btn{background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);border:none;padding:3px 10px;border-radius:3px;font-size:11px;font-weight:700}
+.mock-tb-btn.active{background:var(--orange);color:white}
+.mock-body{display:flex;min-height:180px}
+.mock-sidebar-nav{width:155px;background:#edf2f7;border-right:1px solid #cbd5e0;padding:.4rem 0;flex-shrink:0}
+.mock-sidebar-item{padding:5px 11px;font-size:11px;color:#4a5568;display:flex;align-items:center;gap:5px;font-weight:600}
+.mock-sidebar-item.active{background:var(--orange);color:white}
+.mock-sidebar-item .dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.mock-content{flex:1;padding:.75rem 1rem}
+.mock-row{display:flex;gap:8px;margin-bottom:7px;align-items:center;flex-wrap:wrap}
+.mock-label{font-size:10.5px;color:#4a5568;min-width:100px;font-weight:700}
+.mock-field{flex:1;background:white;border:1px solid #cbd5e0;border-radius:3px;padding:3px 8px;font-size:11px;color:#1a1a3e;min-width:80px;font-weight:600}
+.mock-field.sel{color:var(--orange);font-weight:700}
+.mock-badge{padding:2px 7px;border-radius:20px;font-size:10px;font-weight:900;white-space:nowrap}
+.mock-badge.green{background:#c6f6d5;color:#1a5c38}.mock-badge.blue{background:#bee3f8;color:#1e3a8a}
+.mock-badge.orange{background:#feebc8;color:#7a3500}.mock-badge.red{background:#fed7d7;color:#7a1212}
+.mock-badge.gray{background:#e2e8f0;color:#374151}
+.mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}
+.mock-stat{background:white;border:1px solid #e2e8f0;border-radius:4px;padding:6px 8px;text-align:center}
+.mock-stat .val{font-size:16px;font-weight:900;color:var(--navy);line-height:1.2}
+.mock-stat .lbl{font-size:9px;color:#4a5568;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.mock-table{width:100%;border-collapse:collapse;font-size:11px}
+.mock-table th{background:#1a1a3e;color:white;padding:5px 8px;text-align:left;font-size:10.5px;font-weight:700}
+.mock-table td{padding:4px 8px;border-bottom:1px solid #e2e8f0;color:#374151;font-weight:500}
+.mock-table tr:hover td{background:#ebf8ff}
+.mock-status-bar{background:#2d3748;padding:3px 12px;display:flex;gap:14px;font-size:10px;color:rgba(255,255,255,.45);flex-wrap:wrap}
+.mock-status-bar .ok{color:#68d391;font-weight:700}
+
+/* DOMAIN GRID */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin:1rem 0}
+.domain-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.domain-card-head{font-family:var(--display);font-size:13.5px;font-weight:900;margin-bottom:.45rem;padding-bottom:.35rem;border-bottom:2px solid}
+.domain-card-body{font-size:12.5px;color:var(--muted);line-height:1.65;font-weight:400}
+
+/* INFO CARDS */
+.info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;margin:1rem 0}
+.info-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
+.info-card .ic-icon{font-size:20px;margin-bottom:.4rem}
+.info-card .ic-title{font-weight:900;color:var(--navy);font-size:14.5px;margin-bottom:.3rem}
+.info-card .ic-body{font-size:13px;color:var(--muted);line-height:1.65;font-weight:400}
+
+/* STEPS */
+.steps{margin:1rem 0}
+.step{display:flex;gap:1rem;margin-bottom:.875rem;background:white;border:1px solid var(--border);border-radius:var(--radius);padding:.875rem}
+.step-num{width:32px;height:32px;background:var(--orange);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:900;font-size:14px;flex-shrink:0}
+.step-content .step-title{font-weight:900;color:var(--navy);margin-bottom:.2rem;font-size:14.5px}
+.step-content .step-desc{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:400}
+
+/* TOC */
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1rem 0}
+.toc-item{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:.875rem 1rem;cursor:pointer;transition:all .15s;text-decoration:none;display:block;border-left:4px solid var(--border)}
+.toc-item:hover{border-left-color:var(--orange);background:var(--orange-light);box-shadow:var(--shadow)}
+.toc-item .toc-ch{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.15rem}
+.toc-item .toc-name{font-family:var(--display);font-size:14px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.2rem}
+.toc-item .toc-desc{font-size:11.5px;color:var(--faint);line-height:1.5;font-weight:400}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:1.25rem 0}
+.stat-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow)}
+.stat-card .stat-val{font-family:var(--display);font-size:30px;font-weight:900;color:var(--orange);line-height:1.1}
+.stat-card .stat-label{font-size:12px;color:var(--muted);margin-top:.3rem;line-height:1.4;font-weight:600}
+
+/* TIER LIST */
+.tier-list{display:flex;flex-direction:column;gap:8px;margin:.75rem 0}
+.tier-row{display:flex;align-items:center;gap:12px}
+.tier-badge{font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;min-width:60px;text-align:center}
+
+/* CONTACT BOX */
+.contact-box{background:var(--navy);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin:1.5rem 0;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.contact-box .cb-text .cb-title{font-family:var(--display);font-size:16px;font-weight:900;color:white;margin-bottom:.2rem}
+.contact-box .cb-text .cb-body{font-size:13px;color:rgba(255,255,255,.62);line-height:1.65;font-weight:400}
+.contact-box .cb-email{background:var(--orange);color:white;padding:.6rem 1.25rem;border-radius:var(--radius);font-size:13px;font-weight:900;text-decoration:none;white-space:nowrap;flex-shrink:0}
+
+/* QUIZ */
+.quiz-container{margin:1rem 0}
+.quiz-q{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.875rem;box-shadow:var(--shadow)}
+.quiz-q .q-num{font-size:11px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.quiz-q .q-text{font-weight:700;color:var(--navy);margin-bottom:.75rem;font-size:14.5px;line-height:1.5}
+.quiz-option{display:flex;align-items:flex-start;gap:10px;padding:.5rem .75rem;border-radius:4px;cursor:pointer;transition:background .1s;margin-bottom:4px;border:1px solid transparent}
+.quiz-option:hover{background:var(--orange-light);border-color:var(--orange)}
+.quiz-option input{margin-top:3px;accent-color:var(--orange);flex-shrink:0}
+.quiz-option label{font-size:13.5px;color:var(--text2);cursor:pointer;line-height:1.5;font-weight:500}
+.quiz-option.correct{background:#c6f6d5;border-color:#059669}
+.quiz-option.incorrect{background:var(--danger-bg);border-color:#dc2626}
+.quiz-option.reveal-correct{background:#c6f6d5;border-color:#059669}
+.quiz-actions{display:flex;gap:10px;margin-top:1.5rem;flex-wrap:wrap}
+.quiz-btn{padding:10px 28px;border-radius:var(--radius);border:none;font-size:14px;font-weight:900;font-family:var(--body);cursor:pointer;transition:all .15s}
+.quiz-btn.primary{background:var(--orange);color:white}
+.quiz-btn.secondary{background:white;color:var(--navy);border:1.5px solid var(--border);font-weight:700}
+.quiz-result{background:white;border:2px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin-top:1.5rem;text-align:center;display:none}
+.quiz-result.visible{display:block}
+.quiz-result .result-score{font-family:var(--display);font-size:60px;font-weight:900;line-height:1;margin:1rem 0}
+.quiz-result .result-score.pass{color:var(--success)}
+.quiz-result .result-score.fail{color:var(--danger)}
+.quiz-result .result-label{font-size:24px;font-weight:900;margin-bottom:.5rem;font-family:var(--display)}
+.quiz-result .result-msg{font-size:14.5px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;font-weight:400}
+.quiz-progress{background:var(--border2);border-radius:20px;height:8px;margin:1rem 0;overflow:hidden}
+.quiz-progress-bar{height:100%;background:var(--orange);border-radius:20px;transition:width .3s}
+.quiz-counter{font-size:13px;color:var(--muted);margin-bottom:.75rem;font-weight:600}
+
+/* GLOSSARY */
+.glossary-grid{columns:2;gap:1.5rem;margin:1rem 0}
+.glossary-entry{break-inside:avoid;margin-bottom:1.1rem}
+.glossary-term{font-family:var(--display);font-size:14.5px;font-weight:900;color:var(--navy);border-bottom:1.5px solid var(--border2);padding-bottom:.2rem;margin-bottom:.3rem}
+.glossary-def{font-size:13px;color:var(--muted);line-height:1.65;font-weight:400}
+
+/* NAV */
+.ch-nav{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border2);gap:12px}
+.ch-nav button{padding:9px 22px;border-radius:var(--radius);border:1.5px solid var(--border);background:white;color:var(--navy);font-size:13px;font-weight:700;font-family:var(--body);cursor:pointer;transition:all .15s}
+.ch-nav button:hover{background:var(--cream2);border-color:var(--orange);color:var(--orange)}
+.ch-nav button:disabled{opacity:.3;cursor:default}
+.ch-nav button.primary{background:var(--navy);color:white;border-color:var(--navy)}
+.ch-nav button.primary:hover{background:var(--orange);border-color:var(--orange)}
+
+/* FOOTER */
+.site-footer{background:var(--navy);color:rgba(255,255,255,.45);padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:.5rem;font-weight:600}
+.site-footer strong{color:var(--orange2)}
+.site-footer a{color:var(--orange2);text-decoration:none}
+.site-footer img{height:36px;border-radius:4px}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border2);margin:2rem 0}
+
+/* KEY POINT BOX */
+.key-point{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;margin:1.25rem 0;box-shadow:var(--shadow);border-top:3px solid var(--navy)}
+.key-point .kp-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem}
+.key-point p{margin-bottom:0;font-size:14px}
+
+@media(max-width:860px){.sidebar{display:none}.main{padding:1.5rem 1rem 4rem}.toc-grid{grid-template-columns:1fr}.glossary-grid{columns:1}}
+@media print{.sidebar,.site-header,.ch-nav,.site-footer{display:none!important}.page{display:block!important;page-break-before:always}.main{padding:0;max-width:100%}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-logo-img" src="data:image/png;base64,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" alt="Echolink Solutions">
+    <div class="header-divider"></div>
+    <div class="header-text">
+      <div class="book-title">Healthcare Facet Configuration Textbook</div>
+      <div class="tagline">Echolink Solutions Training Academy &nbsp;|&nbsp; echolinksolutions.com</div>
+    </div>
+  </div>
+  <div class="header-right">Insurance and Payer Systems<br><a href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a></div>
+</header>
+
+<div class="layout">
+<nav class="sidebar">
+  <div class="sidebar-section-label">Book Navigation</div>
+  <a href="#" onclick="show('toc');return false;" class="active" id="nav-toc"><span class="ch-label">Overview</span>Table of Contents</a>
+  <a href="#" onclick="show('intro');return false;" id="nav-intro"><span class="ch-label">Introduction</span>Introduction to Healthcare Facets</a>
+  <a href="#" onclick="show('ch1');return false;" id="nav-ch1"><span class="ch-label">Chapter 1</span>US Healthcare Ecosystem</a>
+  <a href="#" onclick="show('ch2');return false;" id="nav-ch2"><span class="ch-label">Chapter 2</span>Environment and Navigation</a>
+  <a href="#" onclick="show('ch3');return false;" id="nav-ch3"><span class="ch-label">Chapter 3</span>Member and Enrollment</a>
+  <a href="#" onclick="show('ch4');return false;" id="nav-ch4"><span class="ch-label">Chapter 4</span>Provider Network</a>
+  <a href="#" onclick="show('ch5');return false;" id="nav-ch5"><span class="ch-label">Chapter 5</span>Benefits, Pricing and Adjudication</a>
+  <a href="#" onclick="show('ch6');return false;" id="nav-ch6"><span class="ch-label">Chapter 6</span>Claims Processing and Edits</a>
+  <a href="#" onclick="show('ch7');return false;" id="nav-ch7"><span class="ch-label">Chapter 7</span>Dental Configuration</a>
+  <a href="#" onclick="show('ch8');return false;" id="nav-ch8"><span class="ch-label">Chapter 8</span>Billing and Premiums</a>
+  <a href="#" onclick="show('ch9');return false;" id="nav-ch9"><span class="ch-label">Chapter 9</span>Reporting and Analytics</a>
+  <a href="#" onclick="show('ch10');return false;" id="nav-ch10"><span class="ch-label">Chapter 10</span>Compliance, Security and Governance</a>
+  <a href="#" onclick="show('conclusion');return false;" id="nav-conclusion"><span class="ch-label">End</span>Conclusion</a>
+  <a href="#" onclick="show('glossary');return false;" id="nav-glossary"><span class="ch-label">Reference</span>Glossary of Terms</a>
+  <a href="#" onclick="show('quiz');return false;" id="nav-quiz"><span class="ch-label">Assessment</span>40-Point Knowledge Quiz</a>
+</nav>
+<main class="main">
+
+<!-- TABLE OF CONTENTS -->
+<div id="toc" class="page visible">
+  <div style="font-family:var(--display);font-size:24px;font-weight:900;color:var(--navy);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--border2)">Table of Contents</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#" onclick="show('intro');return false;"><div class="toc-ch">Introduction</div><div class="toc-name">Introduction to Healthcare Facets</div><div class="toc-desc">About Echolink Solutions, program overview, how to use this book</div></a>
+    <a class="toc-item" href="#" onclick="show('ch1');return false;"><div class="toc-ch">Chapter 1</div><div class="toc-name">Overview of US Healthcare Ecosystem</div><div class="toc-desc">Payers, providers, TPAs, lines of business and regulatory landscape</div></a>
+    <a class="toc-item" href="#" onclick="show('ch2');return false;"><div class="toc-ch">Chapter 2</div><div class="toc-name">Environment, Navigation and Facet Modules</div><div class="toc-desc">System environments, module structure, navigation and reference tables</div></a>
+    <a class="toc-item" href="#" onclick="show('ch3');return false;"><div class="toc-ch">Chapter 3</div><div class="toc-name">Member and Enrollment Configuration</div><div class="toc-desc">Demographics, enrollment rules, eligibility, COB, lifecycle management</div></a>
+    <a class="toc-item" href="#" onclick="show('ch4');return false;"><div class="toc-ch">Chapter 4</div><div class="toc-name">Provider Network Configuration</div><div class="toc-desc">NPI, credentialing, network tiers, fee schedules, provider directories</div></a>
+    <a class="toc-item" href="#" onclick="show('ch5');return false;"><div class="toc-ch">Chapter 5</div><div class="toc-name">Benefits, Pricing and Adjudication Rules</div><div class="toc-desc">Plan design, accumulators, cost-sharing, prior authorization, formulary</div></a>
+    <a class="toc-item" href="#" onclick="show('ch6');return false;"><div class="toc-ch">Chapter 6</div><div class="toc-name">Claims Processing and Edits</div><div class="toc-desc">Claim types, edit rules, CARC, RARC, 7-step adjudication workflow</div></a>
+    <a class="toc-item" href="#" onclick="show('ch7');return false;"><div class="toc-ch">Chapter 7</div><div class="toc-name">Dental Configuration</div><div class="toc-desc">CDT codes, coverage categories, frequency limits, missing tooth clause</div></a>
+    <a class="toc-item" href="#" onclick="show('ch8');return false;"><div class="toc-ch">Chapter 8</div><div class="toc-name">Billing and Premiums</div><div class="toc-desc">Premium billing cycle, grace periods, retroactivity, collections workflow</div></a>
+    <a class="toc-item" href="#" onclick="show('ch9');return false;"><div class="toc-ch">Chapter 9</div><div class="toc-name">Reporting and Analytics</div><div class="toc-desc">Operational, financial, member, regulatory and quality reports</div></a>
+    <a class="toc-item" href="#" onclick="show('ch10');return false;"><div class="toc-ch">Chapter 10</div><div class="toc-name">Compliance, Security and Governance</div><div class="toc-desc">HIPAA, CMS regulations, RBAC, audit trails, change control</div></a>
+    <a class="toc-item" href="#" onclick="show('glossary');return false;"><div class="toc-ch">Reference</div><div class="toc-name">Glossary of Terms</div><div class="toc-desc">60+ definitions covering all facet and healthcare terminology</div></a>
+    <a class="toc-item" href="#" onclick="show('quiz');return false;" style="border-left-color:var(--orange);background:var(--orange-light)"><div class="toc-ch" style="color:var(--orange)">Assessment</div><div class="toc-name">40-Point Knowledge Quiz</div><div class="toc-desc">Test your knowledge. 80% passing score required for certification</div></a>
+  </div>
+</div>
+
+<!-- INTRODUCTION (only page with the full hero banner) -->
+<div id="intro" class="page">
+  <div class="book-hero">
+    <div class="hero-top">
+      <div class="hero-eyebrow">Deep-Dive Textbook, Insurance and Payer Systems</div>
+      <h1>Healthcare Facet Configuration</h1>
+      <div class="subtitle">A comprehensive guide to configuring, navigating, and governing healthcare payer facet platforms, covering enrollment, provider networks, benefits, claims, dental, billing, reporting, and compliance. Developed by Echolink Solutions Training Academy.</div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-logo-area"><img src="data:image/png;base64,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" alt="Echolink Solutions"></div>
+      <div class="hero-meta-item"><strong>300+</strong>Analysts Trained</div>
+      <div class="hero-meta-item"><strong>50+</strong>Payer Organizations</div>
+      <div class="hero-meta-item"><strong>10 Chapters</strong>plus Glossary and Quiz</div>
+      <div class="hero-meta-item"><strong>echolinksolutions.com</strong>info@echolinksolutions.com</div>
+    </div>
+  </div>
+
+  <div class="body-text">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val">300+</div><div class="stat-label">Facet Configuration Analysts Trained</div></div>
+      <div class="stat-card"><div class="stat-val">50+</div><div class="stat-label">Healthcare Payer and Insurance Companies Served</div></div>
+      <div class="stat-card"><div class="stat-val">10+</div><div class="stat-label">Years of Healthcare IT Training Experience</div></div>
+      <div class="stat-card"><div class="stat-val">100%</div><div class="stat-label">Focused on Payer Systems and Facet Configuration</div></div>
+    </div>
+
+    <h3>About Echolink Solutions Training Academy</h3>
+    <p>Echolink Solutions Training Academy is a specialized healthcare information technology training organization dedicated exclusively to the education and professional development of payer system analysts, benefits administrators, implementation consultants, and managed care professionals. Over the course of our program history, we have trained more than <strong>300 facet configuration analysts</strong> and have partnered with more than <strong>50 healthcare payer and insurance organizations</strong> across the United States, including commercial carriers, Medicare Advantage plans, Medicaid managed care organizations, dental carriers, and third-party administrators of all sizes.</p>
+    <p>Our training philosophy is grounded in a single conviction: that technical configuration knowledge, divorced from clinical, regulatory, and financial context, produces analysts who can operate a system but cannot govern it. Every lesson we teach connects a configuration screen to a real-world consequence for a real member, a real provider, or a real regulatory requirement. Our graduates do not just know how to enter data. They understand why each field exists, what happens downstream if it is wrong, and how to make configuration decisions that will hold up under an audit.</p>
+    <p>We have developed relationships with implementation teams at leading payer organizations nationwide. Many of our graduates have gone on to lead configuration workstreams at major carriers, serve as subject matter experts on platform migration projects, and build internal training programs within their own organizations based on the Echolink Solutions curriculum.</p>
+
+    <div class="contact-box">
+      <div class="cb-text">
+        <div class="cb-title">Access a Demo Environment Tailored to Your Needs</div>
+        <div class="cb-body">If you need access to a live Facets demo platform to practice the concepts covered in this textbook, reach out to our team. We provide demo environments tailored to your organization's specific needs, including pre-configured training data, sandbox claim sets, line-of-business specific configurations, and guided walkthroughs led by experienced Echolink Solutions instructors. Whether you are a new analyst just starting out or an experienced team preparing for a platform migration, we have an environment for you.</div>
+      </div>
+      <a class="cb-email" href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a>
+    </div>
+
+    <h3>What is a healthcare facet configuration platform?</h3>
+    <p>A healthcare facet platform is an enterprise software system used by insurance payers, health plans, and third-party administrators to manage the complete lifecycle of health plan administration. The term "facets" carries two meanings in this context. First, it refers to the modular architecture of these systems, where each functional area (member management, provider management, benefits administration, claims processing, premium billing, and reporting) is a distinct configurable module called a facet. Second, it refers to the filterable, searchable dimensions within each module that allow users to locate records, apply business rules, and analyze data with precision.</p>
+    <p>Leading payer administration platforms that follow this architecture include <strong>TriZetto Facets</strong> (now part of Cognizant), <strong>QNXT</strong>, <strong>HealthRules Payor</strong>, and several proprietary platforms built on similar underlying data models. While specific screen layouts and terminology vary by vendor and version, the underlying configuration concepts, the data relationships, the rule structures, and the regulatory requirements are consistent across the industry. This textbook uses TriZetto Facets as its primary reference system while remaining applicable to any enterprise payer platform.</p>
+    <p>The scale at which these systems operate cannot be overstated. A mid-size health plan may administer coverage for 200,000 to 500,000 members, process 3 to 8 million claims per year, maintain records for 20,000 or more contracted providers, and manage dozens of distinct benefit plans across multiple lines of business. Every one of those transactions is governed by the configuration rules built and maintained by facet analysts. The quality of that configuration is the quality of the plan's operations.</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Facets enterprise platform main dashboard</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">TriZetto Facets Enterprise, Production, Plan: DEMO-MA-2025</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Member</span><span class="mock-tb-btn">Provider</span><span class="mock-tb-btn">Benefits</span><span class="mock-tb-btn">Claims</span><span class="mock-tb-btn">Billing</span><span class="mock-tb-btn">Reports</span><span class="mock-tb-btn">Admin</span></div>
+          <div class="mock-body">
+            <div class="mock-sidebar-nav">
+              <div class="mock-sidebar-item active"><div class="dot"></div>Dashboard</div>
+              <div class="mock-sidebar-item"><div class="dot"></div>Member Search</div>
+              <div class="mock-sidebar-item"><div class="dot"></div>Enrollment</div>
+              <div class="mock-sidebar-item"><div class="dot"></div>Eligibility</div>
+              <div class="mock-sidebar-item"><div class="dot"></div>Disenrollment</div>
+            </div>
+            <div class="mock-content">
+              <div class="mock-grid" style="grid-template-columns:repeat(3,1fr)">
+                <div class="mock-stat"><div class="val">128,450</div><div class="lbl">Active Members</div></div>
+                <div class="mock-stat"><div class="val">4,312</div><div class="lbl">Pending Claims</div></div>
+                <div class="mock-stat"><div class="val">97.3%</div><div class="lbl">Eligibility Match Rate</div></div>
+                <div class="mock-stat"><div class="val">18,220</div><div class="lbl">Active Providers</div></div>
+                <div class="mock-stat"><div class="val">$2.1M</div><div class="lbl">Billed Today</div></div>
+                <div class="mock-stat"><div class="val">3</div><div class="lbl">System Alerts</div></div>
+              </div>
+              <div style="font-size:10px;color:#4a5568;margin-top:8px;font-weight:700">RECENT SYSTEM ACTIVITY</div>
+              <table class="mock-table" style="margin-top:4px"><thead><tr><th>Action</th><th>User</th><th>Module</th><th>Time</th></tr></thead><tbody>
+                <tr><td>Member enrolled</td><td>jsmith</td><td>Enrollment</td><td>09:14 AM</td></tr>
+                <tr><td>Claim adjudicated</td><td>rdavis</td><td>Claims</td><td>09:08 AM</td></tr>
+                <tr><td>Provider network updated</td><td>admin</td><td>Provider</td><td>08:52 AM</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Connected</span><span>User: training_admin</span><span>Env: Training Sandbox</span><span>echolinksolutions.com</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Why facet configuration is a high-stakes profession</h3>
+    <p>In a healthcare payer organization, facet configuration is not a back-office technical support role. It is a compliance-critical, revenue-impacting, member-facing operational function. Consider these realities:</p>
+    <ul>
+      <li>A single misconfigured deductible field can cause the system to under-collect member cost-sharing on every claim for an entire plan year, resulting in millions of dollars in lost revenue that cannot be recovered retroactively once the plan year closes.</li>
+      <li>An incorrect timely filing limit can cause the system to incorrectly deny provider claims that should have been paid, generating provider disputes, reconsideration requests, and potential prompt pay penalty exposure.</li>
+      <li>A missing or incorrect prior authorization rule can allow high-cost procedures to be paid without clinical review, inflating medical costs and potentially triggering a CMS audit for a Medicare Advantage plan.</li>
+      <li>An access control misconfiguration can allow unauthorized users to view or modify member PHI, creating a HIPAA breach that must be reported to the Department of Health and Human Services and potentially to affected members.</li>
+    </ul>
+    <p>This is why Echolink Solutions has built its training program around deep, practical configuration knowledge combined with regulatory awareness. Our graduates understand not just what to configure, but why, and what the consequences are when it is wrong.</p>
+
+    <h3>How this textbook is organized</h3>
+    <p>This textbook follows the natural configuration workflow of a payer platform implementation, beginning with foundational concepts and progressing through each major functional module. Each chapter is designed to stand alone as a reference document while also building on the chapters that precede it. Within each chapter you will find:</p>
+    <ul>
+      <li><strong>Conceptual explanations</strong> that provide the business and regulatory context for each configuration domain</li>
+      <li><strong>Software screenshots</strong> showing realistic platform screens and configuration interfaces</li>
+      <li><strong>Configuration guidance</strong> with specific parameters, rules, and best practices</li>
+      <li><strong>Reference tables</strong> mapping code sets, regulatory requirements, and system parameters</li>
+      <li><strong>Callout boxes</strong> highlighting critical rules, common errors, compliance warnings, and best practices</li>
+    </ul>
+    <p>The book concludes with a comprehensive glossary of over 60 terms and a 40-point knowledge assessment. A passing score of 80% or higher on the assessment earns Echolink Solutions certification credit for this textbook module.</p>
+
+    <div class="callout-info"><strong>Demo environment access</strong>All screen examples in this textbook are drawn from a configured training environment. To request access to a live demo environment tailored to your organization's plan types and configuration challenges, contact Echolink Solutions at info@echolinksolutions.com or visit echolinksolutions.com.</div>
+  </div>
+  <div class="ch-nav"><button disabled>Previous</button><button class="primary" onclick="show('ch1')">Chapter 1, US Healthcare Ecosystem &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 1 -->
+<div id="ch1" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">1</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 1</div><div class="ch-title">Overview of US Healthcare Ecosystem: Payers, Providers and TPAs</div></div>
+  </div>
+  <div class="body-text">
+    <p>The United States healthcare system is one of the most administratively complex ecosystems in the world. Unlike single-payer systems found in many other countries, the US model involves a multi-layered network of public programs, private insurers, employer-sponsored plans, government contractors, and administrative intermediaries, all operating under different regulatory frameworks simultaneously. Before a facet configuration analyst can effectively configure any module in a payer platform, they must understand how this ecosystem is structured, who the key actors are, what their relationships are to one another, and how money and data flow between them.</p>
+    <p>This understanding is not merely academic. Every configuration decision in the facet platform is a reflection of a real-world relationship: between a member and their plan, between a plan and a provider, between an employer and a TPA, between a payer and a regulator. Getting these relationships right in the system begins with understanding them in the real world.</p>
+
+    <h3>The three major actors in the payer ecosystem</h3>
+    <div class="info-cards">
+      <div class="info-card"><div class="ic-icon">&#127968;</div><div class="ic-title">Payers</div><div class="ic-body">Insurance carriers and health plans that assume financial risk in exchange for premium payments. Payers design benefit plans, contract with providers, administer claims, and are regulated by both federal and state agencies. Examples include Aetna, Cigna, UnitedHealthcare, and regional Blue Cross Blue Shield affiliates. Payers own and configure the facet platform.</div></div>
+      <div class="info-card"><div class="ic-icon">&#9877;</div><div class="ic-title">Providers</div><div class="ic-body">Licensed entities that deliver health services to members, including physicians, hospitals, outpatient clinics, behavioral health facilities, pharmacies, home health agencies, laboratories, and durable medical equipment suppliers. Providers contract with payers to become network participants and submit claims for reimbursement after rendering services.</div></div>
+      <div class="info-card"><div class="ic-icon">&#128188;</div><div class="ic-title">Third-Party Administrators (TPAs)</div><div class="ic-body">Organizations that administer health plan functions (claims processing, eligibility management, provider contracting, billing) on behalf of self-funded employers who bear their own financial risk for member claims. TPAs use the same payer platforms as carriers but configure them to serve their client employer groups rather than their own insured products.</div></div>
+    </div>
+
+    <h3>Understanding self-funded versus fully insured plans</h3>
+    <p>One of the most important distinctions in payer operations is the difference between fully insured and self-funded (ASO) plans. In a fully insured arrangement, the employer or individual pays premiums to the insurance carrier, and the carrier assumes all financial risk for member claims. The carrier pools risk across all its insured groups, which is why fully insured premiums reflect the experience of a population broader than any single employer group.</p>
+    <p>In a self-funded arrangement, the employer retains the financial risk. Claims are paid from the employer's own funds, administered by a TPA. The employer purchases stop-loss insurance to cap catastrophic individual claims (specific stop-loss) and total population claims (aggregate stop-loss). Self-funding gives large employers more control over plan design, more transparent claims data, and potentially lower costs, but also more financial exposure and more administrative responsibility. From a facet configuration perspective, self-funded groups require a separate TPA contract configuration, distinct claim fund tracking, stop-loss threshold parameters, and modified reporting structures.</p>
+
+    <h3>Lines of business and their configuration implications</h3>
+    <div class="table-wrap"><table><thead><tr><th>Line of Business</th><th>Member Population</th><th>Primary Regulator</th><th>Key Configuration Considerations</th></tr></thead><tbody>
+      <tr><td>Commercial Fully Insured</td><td>Employer groups and individual market</td><td>State insurance departments</td><td>Group and subscriber hierarchy, dependent age-out, ACA metal tier compliance</td></tr>
+      <tr><td>Self-Funded (ASO)</td><td>Large employer groups</td><td>DOL under ERISA</td><td>TPA contract setup, separate claim fund accounts, stop-loss threshold parameters</td></tr>
+      <tr><td>Medicare Advantage (Part C)</td><td>Medicare-eligible, age 65 and older</td><td>CMS</td><td>CMS bid configuration, STARS quality measures, supplemental benefits, risk score tracking</td></tr>
+      <tr><td>Medicare Part D (Prescription Drug)</td><td>Medicare prescription drug enrollees</td><td>CMS</td><td>Formulary tiers, LIS subsidy levels, TrOOP accumulator, 24-hour formulary update rule</td></tr>
+      <tr><td>Medicaid Managed Care</td><td>Medicaid-eligible low-income individuals</td><td>State Medicaid agencies and CMS</td><td>FIDE SNP rules, LTSS carve-outs, state-specific covered services, encounter data submission</td></tr>
+      <tr><td>ACA Marketplace (Qualified Health Plans)</td><td>Individuals on state and federal exchanges</td><td>CMS and state exchanges</td><td>APTC reconciliation, SEP rules, metal tier plan design, risk adjustment data submission</td></tr>
+      <tr><td>Dental (Stand-Alone)</td><td>Groups and individual dental enrollees</td><td>State departments of insurance</td><td>CDT code sets, frequency limitation configuration, missing tooth clause, orthodontic lifetime maximum</td></tr>
+    </tbody></table></div>
+
+    <h3>How money flows through the payer ecosystem</h3>
+    <p>Understanding the financial flow of the payer ecosystem is fundamental to understanding why every module of the facet platform exists. The flow begins when employers and individuals pay premiums to the payer (or when CMS makes monthly capitation payments to Medicare Advantage plans). The payer invests a portion of premium revenue in administrative expenses, reserves, and profit. When a member receives a service from a provider, a claim is submitted. The facet platform adjudicates the claim, applies the member's cost-sharing (deductible, copay, coinsurance), calculates the payer's payment obligation based on the contracted fee schedule, and generates an EFT payment to the provider and an EOB to the member. Simultaneously, the billing module tracks premium receipts and sends invoices. The reporting module aggregates all transaction data into financial statements, medical loss ratio calculations, IBNR reserve estimates, and regulatory filings. Every step of this cycle is governed by facet configuration.</p>
+
+    <h3>Key regulatory frameworks every analyst must know</h3>
+    <div class="table-wrap"><table><thead><tr><th>Regulation</th><th>Scope</th><th>Key Requirements Affecting Configuration</th></tr></thead><tbody>
+      <tr><td>HIPAA Privacy Rule</td><td>All covered entities</td><td>Minimum necessary access standards, member rights to access records, minimum retention periods</td></tr>
+      <tr><td>HIPAA Security Rule</td><td>All covered entities (ePHI)</td><td>Technical safeguards including audit logging, session management, encryption, access controls</td></tr>
+      <tr><td>ACA (Affordable Care Act)</td><td>Commercial and marketplace plans</td><td>Essential health benefits, OOP maximum limits, no cost-sharing for preventive services, waiting period limits</td></tr>
+      <tr><td>ERISA</td><td>Self-funded employer-sponsored plans</td><td>Plan document requirements, fiduciary duty, claims and appeals processing standards</td></tr>
+      <tr><td>No Surprises Act (2022)</td><td>All commercial health plans</td><td>Prohibition on surprise out-of-network billing, good faith cost estimates, independent dispute resolution</td></tr>
+      <tr><td>CMS Part D Regulations</td><td>Medicare Part D plans</td><td>Formulary transparency, LIS eligibility, coverage gap calculation, 24-hour formulary update requirement</td></tr>
+      <tr><td>CMS Interoperability and PA Final Rule (2024)</td><td>Medicare Advantage, Medicaid, CHIP, QHP payers</td><td>Electronic PA APIs required by 2026, PA decision transparency, denial reason requirements</td></tr>
+    </tbody></table></div>
+
+    <div class="callout-info"><strong>Echolink Solutions training note</strong>Our regulatory compliance training modules map each federal and state requirement directly to its configuration counterpart in the facet platform. Students who complete our full curriculum receive a regulatory mapping reference guide covering all major regulatory requirements for each LOB. Contact info@echolinksolutions.com to learn more.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('intro')">&larr; Introduction</button><button class="primary" onclick="show('ch2')">Chapter 2, Environment and Navigation &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 2 -->
+<div id="ch2" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">2</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 2</div><div class="ch-title">Environment, Navigation and Facet Modules</div></div>
+  </div>
+  <div class="body-text">
+    <p>Before any configuration work begins, a facet analyst must have a thorough understanding of the technical landscape in which they are operating. This chapter covers the system environments used across the configuration lifecycle, the architecture of the facet platform's module structure and the dependencies between modules, the navigation patterns that allow users to locate records and move between functional areas efficiently, and the reference table infrastructure that underpins the entire system. A failure to understand any of these foundational elements leads to configuration errors that are difficult, expensive, and sometimes impossible to reverse in production.</p>
+
+    <h3>System environments and the promotion pathway</h3>
+    <p>Enterprise payer platforms are always deployed across multiple environments. This separation is not optional. It is a fundamental risk management requirement that protects the integrity of production data and operations. Configuration changes must travel through each environment sequentially, with formal validation at each stage, before they are permitted in production. The pressure to "just fix it in prod" is one of the most dangerous cultural dynamics in payer IT organizations, and resisting it is one of the most important professional disciplines an analyst can develop.</p>
+
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Development (DEV)</div><div class="step-desc">The sandbox environment where initial configuration is built, modified, and experimented with freely. Data here is entirely synthetic. No real member, provider, or financial data should ever be present in DEV. Analysts can make and reverse changes without approval workflows. All Echolink Solutions hands-on labs are conducted in DEV environments provided by our training infrastructure.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">System Integration Testing (SIT)</div><div class="step-desc">Configuration changes are deployed to SIT after initial DEV validation. SIT tests cross-module accuracy: a benefit change here, for example, must be verified to correctly affect claims adjudication, accumulator updates, and EOB generation. Integration points with external systems (clearinghouses, pharmacy benefit managers, eligibility hubs, state Medicaid systems) are also tested in SIT using test transaction sets.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">User Acceptance Testing (UAT)</div><div class="step-desc">Business stakeholders, subject matter experts, and designated testers validate that the configuration produces the expected real-world business outcomes. UAT uses realistic (but de-identified or synthetic) data sets that mirror production volumes and edge cases. A formal UAT sign-off document, signed by the business owner, is required before any change proceeds to production.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Production (PROD)</div><div class="step-desc">The live environment serving real members, providers, and employer groups. All changes require a formal change management ticket with documented approval, are typically deployed during scheduled maintenance windows, and are logged with a complete before-and-after audit trail. Unapproved production changes are a serious compliance violation regardless of outcome.</div></div></div>
+    </div>
+
+    <div class="callout-danger"><strong>Critical rule: never bypass the promotion pathway</strong>Even a seemingly trivial table update, if incorrect, can cascade into widespread adjudication errors affecting thousands of members within hours. The cost of a failed production change, including reprocessing, recoupment, member communications, and regulatory reporting, almost always exceeds the cost of proper testing by orders of magnitude.</div>
+
+    <h3>Core facet modules and their interdependencies</h3>
+    <p>The facet platform is not a collection of independent applications. It is an integrated system where every module shares data with every other module. A change in the provider module affects the claims module. A change in the benefit module affects both claims and reporting. A change in the member module affects billing, claims, and eligibility verification simultaneously. Understanding these dependencies is essential for assessing the impact of any configuration change before it is made.</p>
+
+    <div class="domain-grid">
+      <div class="domain-card"><div class="domain-card-head" style="color:#0f766e;border-color:#0d9488">Member</div><div class="domain-card-body">Member demographics, enrollment transactions, eligibility determination, COB records, PCP assignment, disenrollment processing, member ID card generation, dependent management</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#1d4ed8;border-color:#3b82f6">Provider</div><div class="domain-card-body">NPI and identifier management, credentialing status, network tier assignment, fee schedule linking, provider directory data, specialty taxonomy, contract effective dates</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#92400e;border-color:#d97706">Benefits</div><div class="domain-card-body">Benefit plan design, accumulator structure, cost-sharing rules by service category, prior authorization parameters, formulary linkage, exclusion and limitation configuration</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#991b1b;border-color:#ef4444">Claims</div><div class="domain-card-body">Professional, institutional, and pharmacy claim intake, edit engine execution, adjudication logic, payment calculation, CARC and RARC assignment, EFT and EOB generation</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#065f46;border-color:#10b981">Billing</div><div class="domain-card-body">Premium rate tables, invoice generation cycle, payment posting, grace period tracking, retro enrollment adjustment billing, ASO administrative fee invoicing</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#4c1d95;border-color:#8b5cf6">Reports</div><div class="domain-card-body">Standard operational reports, ad hoc query tools, HEDIS measure data, regulatory filing outputs, encounter data generation, dashboard analytics, scheduled report distribution</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#1a1a2e;border-color:#6b7280">Security Admin</div><div class="domain-card-body">Role definition and permission matrices, user provisioning and deprovisioning, session timeout configuration, password policy enforcement, audit log retention settings</div></div>
+      <div class="domain-card"><div class="domain-card-head" style="color:#701a75;border-color:#a21caf">Reference Tables</div><div class="domain-card-body">CPT, HCPCS, CDT, ICD-10 code tables, place of service codes, modifier tables, CARC and RARC code sets, provider taxonomy codes, plan-specific custom lookup values</div></div>
+    </div>
+
+    <h3>Reference table management and update schedules</h3>
+    <p>Reference tables are the foundational data layer that every other module depends on. When a physician bills with a new CPT code and that code is not present in the system's procedure code table, the claim will fail at intake with a code validation edit. When a hospital discharge is coded with a new ICD-10 code not yet loaded to the diagnosis table, the DRG assignment engine fails. Reference table management is therefore a scheduled, non-negotiable maintenance activity that must be planned, tested, and deployed on a defined calendar aligned with the official code set update schedules.</p>
+
+    <div class="table-wrap"><table><thead><tr><th>Code Set</th><th>Update Date</th><th>Governing Body</th><th>Scope of Changes</th><th>Testing Required</th></tr></thead><tbody>
+      <tr><td>CPT (Current Procedural Terminology)</td><td>January 1</td><td>AMA</td><td>New codes, deleted codes, revised descriptions, resequenced codes</td><td>Claims adjudication testing with new code set claims</td></tr>
+      <tr><td>ICD-10-CM (Diagnosis)</td><td>October 1</td><td>CMS and CDC</td><td>New diagnosis codes, code deactivations, revised code titles and guidelines</td><td>DRG assignment testing, MUE validation</td></tr>
+      <tr><td>CDT (Current Dental Terminology)</td><td>January 1</td><td>ADA</td><td>New dental procedure codes, revised descriptions</td><td>Dental claims adjudication and frequency limit testing</td></tr>
+      <tr><td>HCPCS Level II</td><td>Quarterly (CMS)</td><td>CMS</td><td>Drug codes, supply codes, new temporary codes (Q, G, C series)</td><td>Pharmacy and DME claims testing</td></tr>
+      <tr><td>NUCC Provider Taxonomy</td><td>Semi-annual (April and October)</td><td>NUCC</td><td>New specialty codes, retired codes, revised definitions</td><td>Provider credentialing and claims specialty validation</td></tr>
+      <tr><td>CARC and RARC</td><td>January 1 (CMS)</td><td>X12 Committee</td><td>New adjustment reason codes, retired codes, revised descriptions</td><td>Claims denial messaging and ERA generation testing</td></tr>
+    </tbody></table></div>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Module navigation and member search interface</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Facets, Member Module, Advanced Search</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Member</span><span class="mock-tb-btn">Provider</span><span class="mock-tb-btn">Benefits</span><span class="mock-tb-btn">Claims</span><span class="mock-tb-btn">Billing</span><span class="mock-tb-btn">Admin</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:#1a1a3e;margin-bottom:8px">Member Search, available facet filters</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">Member ID</div><div class="mock-field" style="padding:5px 8px">MBR-00112</div></div>
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">Last Name</div><div class="mock-field" style="padding:5px 8px">Johnson</div></div>
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">First Name</div><div class="mock-field" style="padding:5px 8px">Maria</div></div>
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">Date of Birth</div><div class="mock-field" style="padding:5px 8px">04/12/1978</div></div>
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">Group ID</div><div class="mock-field sel" style="padding:5px 8px">GRP-00451</div></div>
+              <div><div style="font-size:10px;color:#4a5568;margin-bottom:2px;font-weight:700">Enrollment Status</div><div class="mock-field sel" style="padding:5px 8px">Active</div></div>
+            </div>
+            <table class="mock-table"><thead><tr><th>Member ID</th><th>Name</th><th>DOB</th><th>Group</th><th>Plan</th><th>Status</th></tr></thead><tbody>
+              <tr><td>MBR-00112</td><td>Johnson, Maria</td><td>04/12/1978</td><td>GRP-00451</td><td>PPO-GOLD-2025</td><td><span class="mock-badge green">Active</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; 1 result found</span><span>Search time: 0.09s</span><span>Facets applied: 3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-success"><strong>Best practice: use the most specific search facet available</strong>Searching by Member ID returns a single record in milliseconds. Searching by last name alone on a system with 500,000 members returns thousands of results, degrades system performance, and risks a HIPAA minimum-necessary violation if the results display PHI for members you were not intending to access. Always narrow your search to the most specific combination of identifiers available.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch1')">&larr; Chapter 1</button><button class="primary" onclick="show('ch3')">Chapter 3, Member and Enrollment &rarr;</button></div>
+</div>
+
+<!-- CHAPTERS 3-10, CONCLUSION, GLOSSARY are in next section -->
+
+<!-- CHAPTER 3 -->
+<div id="ch3" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">3</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 3</div><div class="ch-title">Member and Enrollment Configuration</div></div>
+  </div>
+  <div class="body-text">
+    <p>Member and enrollment configuration is the operational foundation of every other function in the payer platform. Without an accurate, complete, and timely member record, the system cannot correctly adjudicate claims, apply benefits, generate invoices, produce regulatory reports, or satisfy any of its core administrative obligations. In the healthcare payer industry, the principle of garbage in, garbage out applies nowhere more directly or more consequentially than to member data. An error in a member's enrollment record does not affect just that member. It affects every claim submitted for that member, every premium billed, every eligibility response sent to a provider, and every regulatory report that includes that member's data.</p>
+
+    <h3>The member record hierarchy</h3>
+    <p>In the facet platform, members are organized in a three-level hierarchy. At the top level is the <strong>Subscriber</strong>, the primary policyholder, typically the employee or the individual who purchased the plan directly. Beneath the subscriber are <strong>Dependents</strong>, who are covered under the subscriber's policy (spouse, children, domestic partners, and other qualifying dependents as defined by the plan). Each individual, subscriber and dependent alike, receives a unique <strong>Member ID</strong> that serves as the primary key used throughout all modules of the system. The subscriber also holds a <strong>Subscriber ID</strong>, which links to the group or employer account, the premium billing record, and the employer group contract.</p>
+    <p>The distinction between the subscriber and dependent records matters for claims adjudication (COB order is determined by subscriber relationship), for premium billing (the invoice aggregates by subscriber household), for eligibility responses (270/271 transactions identify the subscriber as the primary party), and for ID card generation (the subscriber is the primary cardholder). Analysts must configure relationship codes accurately at enrollment and update them immediately whenever a qualifying life event changes the composition of the household.</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Member demographics and plan enrollment record</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Member Record, MBR-00112, Johnson, Maria A.</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Demographics</span><span class="mock-tb-btn">Enrollment</span><span class="mock-tb-btn">Benefits</span><span class="mock-tb-btn">Claims History</span><span class="mock-tb-btn">COB</span><span class="mock-tb-btn">Audit</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-row"><span class="mock-label">Member ID</span><span class="mock-field">MBR-00112</span><span class="mock-label" style="margin-left:8px">Subscriber ID</span><span class="mock-field">SUB-00080</span></div>
+            <div class="mock-row"><span class="mock-label">Last Name</span><span class="mock-field">Johnson</span><span class="mock-label" style="margin-left:8px">First Name</span><span class="mock-field">Maria A.</span></div>
+            <div class="mock-row"><span class="mock-label">Date of Birth</span><span class="mock-field">04/12/1978</span><span class="mock-label" style="margin-left:8px">Gender</span><span class="mock-field sel">Female</span></div>
+            <div class="mock-row"><span class="mock-label">Relationship</span><span class="mock-field sel">01, Self (Subscriber)</span><span class="mock-label" style="margin-left:8px">Status</span><span class="mock-field"><span class="mock-badge green">Active</span></span></div>
+            <div class="mock-row"><span class="mock-label">Plan</span><span class="mock-field sel">PPO-GOLD-2025</span><span class="mock-label" style="margin-left:8px">Group</span><span class="mock-field">GRP-00451 Acme Corp</span></div>
+            <div class="mock-row"><span class="mock-label">Effective Date</span><span class="mock-field">01/01/2025</span><span class="mock-label" style="margin-left:8px">Term Date</span><span class="mock-field">12/31/2025</span></div>
+            <div class="mock-row"><span class="mock-label">PCP Assigned</span><span class="mock-field sel">Dr. James Okafor, NPI: 1234567890</span></div>
+            <div class="mock-row"><span class="mock-label">Coverage Lines</span><span class="mock-field"><span class="mock-badge green">Medical</span> <span class="mock-badge blue">Dental</span> <span class="mock-badge gray">Vision</span></span></div>
+            <div class="mock-row"><span class="mock-label">Deductible YTD</span><span class="mock-field">$420.00 of $1,500.00</span><span class="mock-label" style="margin-left:8px">OOP YTD</span><span class="mock-field">$420.00 of $4,500.00</span></div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Record active</span><span>Last updated: 01/02/2025 by jsmith</span><span>COB: None on file</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Enrollment rules configuration in depth</h3>
+    <p>Enrollment rule configuration defines the conditions under which a person may become covered, change their coverage, or be terminated from coverage. These rules must precisely match the plan's governing documents (the Summary Plan Description for self-funded plans, the Certificate of Coverage for insured plans) and applicable law. The system enforces these rules automatically once configured, accepting or rejecting enrollment transactions at the point of submission.</p>
+    <p>The most consequential enrollment rule parameters include the <strong>waiting period</strong> (the number of days between an employee's hire date and eligibility for benefits, limited by the ACA to 90 days maximum for applicable large employers), the <strong>open enrollment period</strong> (the annual window during which members may change coverage), and <strong>qualifying life event windows</strong> (the SEP windows triggered by specific events). Each of these must be configured accurately in the enrollment rules module and validated against the group's plan documents before the group goes live on the platform.</p>
+
+    <div class="table-wrap"><table><thead><tr><th>Enrollment Event</th><th>Trigger</th><th>Window</th><th>Required Documentation</th><th>System Parameter</th></tr></thead><tbody>
+      <tr><td>New hire</td><td>First day of employment or eligibility date</td><td>30 days from hire (plan document defines)</td><td>Employment verification letter</td><td>WAITING_PERIOD_DAYS, NEW_HIRE_WINDOW</td></tr>
+      <tr><td>Annual open enrollment</td><td>Annual OEP window defined by group</td><td>30 days typically (group-defined)</td><td>None required for changes</td><td>OEP_START_DATE, OEP_END_DATE</td></tr>
+      <tr><td>Marriage</td><td>Date of marriage ceremony</td><td>30 days from marriage date</td><td>Marriage certificate</td><td>QLE_MARRIAGE_WINDOW</td></tr>
+      <tr><td>Birth or adoption</td><td>Date of birth or date of placement</td><td>30 days from event date</td><td>Birth certificate or adoption order</td><td>QLE_BIRTH_WINDOW</td></tr>
+      <tr><td>Loss of other coverage</td><td>Date prior coverage terminates</td><td>60 days from coverage loss (ACA)</td><td>Coverage termination notice from prior carrier</td><td>QLE_LOSS_COV_WINDOW</td></tr>
+      <tr><td>Dependent age-out</td><td>Dependent's 26th birthday</td><td>Automatic termination, system-triggered</td><td>None, automatic by rule</td><td>DEP_AGEOUT_RULE = 26</td></tr>
+      <tr><td>Divorce or legal separation</td><td>Date of divorce decree</td><td>30 days from divorce date</td><td>Divorce decree document</td><td>QLE_DIVORCE_WINDOW</td></tr>
+      <tr><td>Death of subscriber</td><td>Date of death</td><td>COBRA or conversion election period</td><td>Death certificate</td><td>COBRA_ELECTION_DAYS</td></tr>
+    </tbody></table></div>
+
+    <h3>Coordination of Benefits (COB) configuration in depth</h3>
+    <p>When a member carries coverage under more than one health plan, the COB configuration in the facet platform determines the order of payment liability between plans, preventing duplicate payment for the same service. COB is one of the most commonly misconfigured areas in payer operations, and COB errors are among the most difficult and expensive to identify and correct retroactively.</p>
+    <p>The COB record for a member must capture the other carrier's name and address, the other policy number and group number, the policyholder's name and relationship to the member, the other plan's effective and termination dates, and the COB coordination method. The three primary coordination methods are: <strong>non-duplication</strong> (the secondary plan pays nothing if the primary plan paid as much as or more than the secondary plan would have paid as primary), <strong>maintenance of benefits</strong> (the most common method, where the secondary plan pays the lesser of what it would have paid as primary or the actual remaining balance after the primary payment), and <strong>carve-out</strong> (the secondary plan reduces its liability by the amount paid by the primary plan).</p>
+    <p>COB order for dependents is typically determined by the <strong>birthday rule</strong>: the plan of the parent whose birthday (month and day, regardless of birth year) falls earlier in the calendar year is primary. If both parents have the same birthday, the plan that has covered the parent longer is primary. For Medicare Secondary Payer situations, the order depends on whether the member is actively employed and the employer's size (100 or more employees for disability and 20 or more for age).</p>
+
+    <div class="callout-warn"><strong>High-risk configuration error: missing COB data</strong>When a member with dual coverage has no COB record configured, the plan pays as if it were the only insurer, potentially paying amounts that should have been paid by the primary insurer. This constitutes both an overpayment and a potential fraud and abuse exposure. COB information must be solicited at enrollment, reverified at each open enrollment, and updated immediately upon any reported change in the member's other coverage.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch2')">&larr; Chapter 2</button><button class="primary" onclick="show('ch4')">Chapter 4, Provider Network &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 4 -->
+<div id="ch4" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">4</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 4</div><div class="ch-title">Provider Network Configuration</div></div>
+  </div>
+  <div class="body-text">
+    <p>Provider network configuration defines the complete ecosystem of healthcare providers contracted with the payer: who they are, what specialties they practice, where they are located, which networks they participate in, what they are paid, and how they are presented in member-facing directories. Errors in provider configuration are among the most operationally costly in payer systems because they propagate across every claim submitted by the affected provider, often for extended periods before detection. A single fee schedule error on a high-volume primary care physician can result in hundreds of thousands of dollars in overpayments or underpayments before anyone notices.</p>
+
+    <h3>Provider identifiers and record structure</h3>
+    <p>Every provider in the facet system is anchored by their <strong>National Provider Identifier (NPI)</strong>, a 10-digit unique identifier issued by CMS's NPPES system. Type 1 NPIs identify individual practitioners (physicians, nurse practitioners, physical therapists, psychologists). Type 2 NPIs identify organizations (hospitals, group practices, home health agencies, pharmacy chains). When a physician bills under their group practice's tax ID, the claim must carry both the <strong>rendering provider NPI</strong> (the individual Type 1 NPI of the physician who performed the service) and the <strong>billing provider NPI</strong> (the Type 2 NPI of the group practice submitting the claim). Both must be configured and linked in the system, and the fee schedule and network status must be validated for the billing entity, not just the individual.</p>
+    <p>Additional required identifiers include the <strong>Tax Identification Number (TIN or EIN)</strong> used for payment and 1099 reporting, <strong>state license numbers</strong> in each state where the provider practices, <strong>DEA registration numbers</strong> for providers who prescribe controlled substances, and payer-assigned <strong>provider IDs</strong> used as internal cross-references. All of these identifiers must be verified during credentialing and re-verified at the time of recredentialing (typically every two years).</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Provider profile and network tier assignment screen</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Provider Record, NPI: 1234567890, Dr. James Okafor MD</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Profile</span><span class="mock-tb-btn">Networks</span><span class="mock-tb-btn">Fee Schedule</span><span class="mock-tb-btn">Contracts</span><span class="mock-tb-btn">Locations</span><span class="mock-tb-btn">Credentials</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-row"><span class="mock-label">NPI (Type 1)</span><span class="mock-field">1234567890</span><span class="mock-label" style="margin-left:8px">Tax ID</span><span class="mock-field">XX-XXXXXXX</span></div>
+            <div class="mock-row"><span class="mock-label">Last Name</span><span class="mock-field">Okafor</span><span class="mock-label" style="margin-left:8px">First Name</span><span class="mock-field">James</span></div>
+            <div class="mock-row"><span class="mock-label">Degree</span><span class="mock-field">MD</span><span class="mock-label" style="margin-left:8px">Gender</span><span class="mock-field">Male</span></div>
+            <div class="mock-row"><span class="mock-label">NUCC Taxonomy</span><span class="mock-field sel">207Q00000X, Family Medicine</span></div>
+            <div class="mock-row"><span class="mock-label">Network Tier</span><span class="mock-field sel">Tier 1, Preferred</span><span class="mock-label" style="margin-left:8px">Status</span><span class="mock-field"><span class="mock-badge green">Active, In-Network</span></span></div>
+            <div class="mock-row"><span class="mock-label">Contract Eff.</span><span class="mock-field">01/01/2024</span><span class="mock-label" style="margin-left:8px">Contract Term</span><span class="mock-field">12/31/2025</span></div>
+            <div class="mock-row"><span class="mock-label">Fee Schedule</span><span class="mock-field sel">RBRVS-2025-FAMILY-MED</span></div>
+            <div class="mock-row"><span class="mock-label">Accepting Patients</span><span class="mock-field"><span class="mock-badge green">Yes</span></span><span class="mock-label" style="margin-left:8px">PCP Eligible</span><span class="mock-field"><span class="mock-badge blue">Yes</span></span></div>
+            <div class="mock-row"><span class="mock-label">Networks</span><span class="mock-field">PREMIER-HMO, BROAD-PPO, DENTAL-BASIC</span></div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Credentialed</span><span>Last credentialed: 06/15/2024</span><span>Next due: 06/2026</span><span>License: Active in TX, OK</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>The critical importance of the provider-plan relationship</h3>
+    <p>Network tier is not a fixed property of the provider. It is a property of the relationship between the provider and a specific plan on a specific date. This is perhaps the most frequently misunderstood concept in provider configuration and the source of some of the most expensive claims payment errors in the industry. The same physician may be <strong>Tier 1 (preferred, lowest member cost-sharing)</strong> on one commercial PPO plan, <strong>Tier 2 (in-network, standard cost-sharing)</strong> on a different commercial plan from the same payer, <strong>in-network</strong> on a Medicare Advantage plan, and <strong>out-of-network</strong> on a narrow HMO plan. Each of these relationships must be configured separately in the provider-plan linking table, with distinct effective dates, fee schedule assignments, and network tier designations.</p>
+
+    <h3>Fee schedule types and configuration requirements</h3>
+    <div class="table-wrap"><table><thead><tr><th>Fee Schedule Type</th><th>Claim Type</th><th>Reimbursement Basis</th><th>Configuration Requirements</th></tr></thead><tbody>
+      <tr><td>RBRVS (Resource-Based Relative Value Scale)</td><td>Professional CMS-1500</td><td>RVUs times conversion factor times GPCI</td><td>CPT-level RVU table, geographic GPCI adjuster, annual conversion factor, modifier adjustments</td></tr>
+      <tr><td>DRG (Diagnosis-Related Group)</td><td>Institutional UB-04 inpatient</td><td>Fixed payment per discharge by DRG category</td><td>DRG weight table (MS-DRG or APR-DRG), base rate by hospital tier, outlier threshold, transfer rules</td></tr>
+      <tr><td>Per Diem</td><td>Institutional (SNF, behavioral, rehab)</td><td>Fixed daily rate by service category</td><td>Service category to rate table, maximum day limits, concurrent review triggers</td></tr>
+      <tr><td>Case Rate</td><td>Professional or institutional</td><td>Fixed episode payment for defined procedure</td><td>Procedure to rate mapping, episode definition rules, carve-out services list</td></tr>
+      <tr><td>Percentage of Billed Charges</td><td>Out-of-network</td><td>Defined percentage of submitted charges</td><td>Percentage by provider type, UCR database linkage, balance billing rules</td></tr>
+      <tr><td>Capitation</td><td>Primary care (HMO)</td><td>Fixed PMPM regardless of utilization</td><td>Capitation rate table, member attribution rules, carve-out services, risk pool configuration</td></tr>
+    </tbody></table></div>
+
+    <div class="callout-success"><strong>Best practice: configure fee schedule expiration alerts</strong>Set up automated alerts 90 days before any fee schedule effective date expires. An expired fee schedule reverts the system to billed charges for affected procedure codes, which for hospital and specialty services can be 3 to 10 times the contracted rate. This type of error is rarely caught until financial reconciliation, by which time significant overpayments have already been made.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch3')">&larr; Chapter 3</button><button class="primary" onclick="show('ch5')">Chapter 5, Benefits and Pricing &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 5 -->
+<div id="ch5" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">5</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 5</div><div class="ch-title">Benefits, Pricing and Adjudication Rules</div></div>
+  </div>
+  <div class="body-text">
+    <p>Benefit plan configuration is the technical translation of the member's plan documents into a set of enforceable system rules that govern every claim payment decision the platform makes. It is the most complex and consequential configuration domain in the payer platform, and it is the area where errors have the broadest and most expensive consequences. A benefit configuration error does not affect one claim. It affects every claim for every member enrolled in that plan for the full duration of the error, which in many cases means an entire plan year before the problem is identified and corrected.</p>
+    <p>The ACA added significant complexity to benefit configuration by establishing mandatory minimum benefit standards (essential health benefits), cost-sharing limits (annual out-of-pocket maximums), and coverage requirements (preventive services with no cost-sharing) that must be precisely reflected in the system regardless of what the employer or plan sponsor might prefer. Non-compliance with ACA benefit requirements can result in the plan losing its status as minimum essential coverage, exposing the employer to penalties and the members to gaps in regulatory protection.</p>
+
+    <h3>Benefit plan hierarchy and structure</h3>
+    <p>Benefit plans are organized in a three-level hierarchy within the facet platform. The <strong>Plan</strong> is the top-level record containing administrative parameters: plan effective dates, network assignment, accumulator structure (embedded vs. aggregate), plan year definition, ACA metal tier designation, and references to associated fee schedules and formularies. Below the plan are <strong>Benefit Packages</strong>, which group related services into functional categories (preventive care, primary care office visits, specialist visits, emergency care, inpatient facility, mental health, pharmacy). Within each package are <strong>Benefit Lines</strong>, each governing a specific service or service category with its own cost-sharing structure, frequency limitations, exclusions, prior authorization requirements, and provider type restrictions.</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Benefit plan accumulator and cost-sharing configuration screen</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Benefit Plan: PPO-GOLD-2025, Accumulators and Cost-Sharing</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn">Plan Info</span><span class="mock-tb-btn active">Accumulators</span><span class="mock-tb-btn">Benefit Lines</span><span class="mock-tb-btn">Exclusions</span><span class="mock-tb-btn">PA Rules</span><span class="mock-tb-btn">Formulary</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-row"><span class="mock-label">Plan Year</span><span class="mock-field">01/01/2025 to 12/31/2025</span><span class="mock-label" style="margin-left:8px">Metal Tier</span><span class="mock-field sel">Gold (ACA)</span></div>
+            <div class="mock-row"><span class="mock-label">Accumulator Type</span><span class="mock-field sel">Embedded (ind. within family)</span></div>
+            <div class="mock-row"><span class="mock-label">Deductible (Ind.)</span><span class="mock-field">$1,500 In-Network / $3,000 Out-of-Network</span></div>
+            <div class="mock-row"><span class="mock-label">Deductible (Family)</span><span class="mock-field">$3,000 In-Network / $6,000 Out-of-Network</span></div>
+            <div class="mock-row"><span class="mock-label">OOP Max (Ind.)</span><span class="mock-field">$4,500 In-Network / $9,000 Out-of-Network</span></div>
+            <div class="mock-row"><span class="mock-label">OOP Max (Family)</span><span class="mock-field">$9,000 In-Network / $18,000 Out-of-Network</span></div>
+            <div class="mock-row"><span class="mock-label">Rx to Deductible</span><span class="mock-field sel">Yes</span><span class="mock-label" style="margin-left:8px">Rx to OOP Max</span><span class="mock-field sel">Yes</span></div>
+            <div class="mock-row"><span class="mock-label">Preventive to OOP</span><span class="mock-field sel">No (ACA-required exclusion)</span></div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; ACA compliant</span><span>2025 MOOP limit: $9,450 ind. (CMS)</span><span>Status: Within limit</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Embedded vs. aggregate accumulators</h3>
+    <p>The embedded vs. aggregate distinction is one of the most important benefit configuration decisions for family plans, and the one most frequently misunderstood by members. In an <strong>embedded accumulator</strong>, each individual family member has their own separate deductible and OOP maximum. When any single family member's individual threshold is reached, that person's claims are processed without further cost-sharing for that accumulator type, regardless of what the rest of the family has spent. In an <strong>aggregate accumulator</strong>, only the family-level threshold applies, and no individual receives benefits until the family's collective spending reaches the family deductible or OOP maximum.</p>
+    <p>The ACA requires that the individual OOP maximum embedded within a family plan may not exceed the ACA's single individual OOP maximum limit, even if the plan uses an aggregate family deductible. This means that even a plan with an aggregate family deductible of $6,000 must apply an embedded individual OOP maximum that prevents any single member from paying more than the individual limit before 100% coverage kicks in. Configuring an aggregate plan without this embedded OOP maximum cap is an ACA compliance violation.</p>
+
+    <h3>Prior authorization configuration and regulatory requirements</h3>
+    <p>Prior authorization (PA) configuration specifies which services require advance payer approval before being rendered. Each PA rule in the system specifies the procedure code range subject to authorization, the provider types to which the rule applies, the clinical criteria set referenced (InterQual, MCG, or plan-specific guidelines), the authorization validity period (typically 90 days), the authorized number of units or visits, and the consequence for claims submitted without a required authorization (denial or reduction).</p>
+    <p>The 2024 CMS Interoperability and Prior Authorization Final Rule imposes significant new requirements on payers administering Medicare Advantage, Medicaid, CHIP, and qualified health plans. Beginning in 2026, these payers must implement FHIR-based prior authorization APIs allowing providers to submit and receive PA decisions electronically. PA decisions must include specific reasons for denials, and payers must report aggregate PA metrics annually. These requirements will necessitate significant configuration changes in the PA workflow module for affected payers.</p>
+
+    <div class="callout-danger"><strong>Compliance requirement: PA decision turnaround times</strong>CMS regulations require urgent PA decisions within 72 hours and standard PA decisions within 7 calendar days. State regulations may impose shorter deadlines. The PA workflow configuration must enforce these turnaround times with automated escalation alerts when requests approach the deadline. Exceeding statutory PA decision turnaround times is a reportable compliance finding.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch4')">&larr; Chapter 4</button><button class="primary" onclick="show('ch6')">Chapter 6, Claims Processing &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 6 -->
+<div id="ch6" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">6</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 6</div><div class="ch-title">Claims Processing and Edits</div></div>
+  </div>
+  <div class="body-text">
+    <p>Claims processing is the operational heart of the payer system and the point where every configuration decision made across all other modules converges into a single outcome: a payment, a denial, or a pend. The claims module receives transactions from clearinghouses and direct submitters, validates them against a comprehensive library of edit rules, adjudicates eligible claims against member benefits and provider contracts, calculates payment amounts, updates accumulator records, generates provider remittances, and issues member EOBs. The configuration of this module, and the accuracy of all the data it draws from other modules, determines the accuracy and integrity of every dollar that flows through the organization.</p>
+
+    <h3>Claim types and their electronic transaction formats</h3>
+    <div class="info-cards">
+      <div class="info-card"><div class="ic-icon">&#128196;</div><div class="ic-title">Professional (CMS-1500)</div><div class="ic-body">Used by physicians, outpatient clinics, behavioral health providers, and other non-institutional providers. Electronic format is the ANSI ASC X12 837P transaction set. Contains up to 99 service lines with procedure codes (CPT or HCPCS), diagnosis pointers, modifiers, units, place of service codes, and charges per line.</div></div>
+      <div class="info-card"><div class="ic-icon">&#127973;</div><div class="ic-title">Institutional (UB-04)</div><div class="ic-body">Used by hospitals, SNFs, home health agencies, outpatient hospital departments, ambulatory surgery centers, and other facility-based providers. Electronic format is the 837I. Contains revenue codes, condition codes, occurrence codes, value codes, and admit and discharge information in addition to procedure codes.</div></div>
+      <div class="info-card"><div class="ic-icon">&#128138;</div><div class="ic-title">Pharmacy (NCPDP)</div><div class="ic-body">Used by retail, mail-order, and specialty pharmacies for drug dispensing claims. Processed in real time using the NCPDP D.0 transaction standard. Requires NDC code, days supply, quantity dispensed, DAW code, prescriber NPI, and pharmacy NPI. Usually processed through a pharmacy benefit manager (PBM).</div></div>
+    </div>
+
+    <h3>The complete adjudication workflow</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Claim intake and format validation</div><div class="step-desc">The claim is received via clearinghouse 837 transaction or manual data entry. The system validates that all required HIPAA transaction fields are present, correctly formatted, and within acceptable value ranges. Claims that fail format validation are rejected with a 277CA transaction and must be corrected and resubmitted by the provider. They do not enter the adjudication queue and do not receive an EOB.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Duplicate claim detection</div><div class="step-desc">Before any eligibility or benefit logic is applied, the system checks whether an identical or substantially similar claim has already been received and processed. Duplicate detection uses a combination of member ID, provider NPI, date of service, procedure code, and charge amount. Exact duplicates are denied with CARC 18. Near-duplicates may be pended for human review.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Member eligibility verification</div><div class="step-desc">The system confirms the member was enrolled in an active plan that covers the submitted claim type on the date of service. It validates the subscriber ID or member ID, checks that the coverage line (medical, dental, pharmacy) matches the claim type, confirms the plan year, and verifies that the member has not been retroactively terminated for the service date.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Provider verification and network status</div><div class="step-desc">The rendering and billing provider NPIs are validated against the provider table. The system checks that the provider had an active in-network contract on the date of service for the applicable plan. Out-of-network claims are not denied but are processed under out-of-network benefit rules with different fee schedule parameters and higher member cost-sharing.</div></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-title">Clinical and coding edits</div><div class="step-desc">The claim passes through a library of clinical edit rules: medically unlikely edits (MUE) checking unit quantities, unbundling edits preventing separate billing of components already included in a global code, gender-specific procedure validation, age-restricted procedure validation, diagnosis-to-procedure compatibility, modifier-procedure compatibility, and place-of-service appropriateness checks.</div></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-content"><div class="step-title">Benefit application and pricing</div><div class="step-desc">The system applies the member's benefit plan rules: is the service a covered benefit, is PA required (and was PA obtained), is the deductible applicable to this service, what is the coinsurance or copay, what is the allowed amount from the fee schedule, and have any frequency limits been exceeded? Accumulators are updated here: the deductible and OOP YTD totals are incremented.</div></div></div>
+      <div class="step"><div class="step-num">7</div><div class="step-content"><div class="step-title">COB calculation, payment generation and remittance</div><div class="step-desc">If COB records exist for the member, secondary liability is calculated. The final payment amount is determined, the EFT payment is queued for the next payment cycle, the 835 ERA is generated for the provider detailing the payment breakdown, and the member EOB is generated showing their liability. All accumulator records are committed to the database.</div></div></div>
+    </div>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Claim adjudication detail with edit results</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Claim: CLM-2025-00889, Full Adjudication Detail</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Claim Header</span><span class="mock-tb-btn">Service Lines</span><span class="mock-tb-btn">Edits</span><span class="mock-tb-btn">Payment</span><span class="mock-tb-btn">Accumulators</span><span class="mock-tb-btn">EOB Preview</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-row"><span class="mock-label">Claim ID</span><span class="mock-field">CLM-2025-00889</span><span class="mock-label" style="margin-left:8px">Claim Type</span><span class="mock-field sel">Professional, 837P</span></div>
+            <div class="mock-row"><span class="mock-label">Member</span><span class="mock-field">Johnson, Maria A. (MBR-00112)</span></div>
+            <div class="mock-row"><span class="mock-label">Provider</span><span class="mock-field">Dr. James Okafor MD, NPI: 1234567890</span></div>
+            <div class="mock-row"><span class="mock-label">Date of Service</span><span class="mock-field">03/15/2025</span><span class="mock-label" style="margin-left:8px">Billed</span><span class="mock-field">$450.00</span></div>
+            <div class="mock-row"><span class="mock-label">Allowed Amount</span><span class="mock-field">$280.00</span><span class="mock-label" style="margin-left:8px">Plan Paid</span><span class="mock-field" style="color:#044d38;font-weight:700">$224.00</span></div>
+            <div class="mock-row"><span class="mock-label">Member Liability</span><span class="mock-field">$56.00 (20% coinsurance after ded.)</span><span class="mock-label" style="margin-left:8px">Status</span><span class="mock-field"><span class="mock-badge green">Paid</span></span></div>
+            <div style="margin-top:8px"><table class="mock-table"><thead><tr><th>Edit Code</th><th>Description</th><th>Result</th></tr></thead><tbody>
+              <tr><td>E001</td><td>Member eligibility on DOS</td><td><span class="mock-badge green">Pass</span></td></tr>
+              <tr><td>E012</td><td>Provider in-network status</td><td><span class="mock-badge green">Pass</span></td></tr>
+              <tr><td>E045</td><td>Duplicate claim check</td><td><span class="mock-badge green">Pass</span></td></tr>
+              <tr><td>E103</td><td>PA required, AUTH-00441 verified</td><td><span class="mock-badge green">Pass</span></td></tr>
+              <tr><td>E220</td><td>Timely filing limit check</td><td><span class="mock-badge green">Pass (within 180 days)</span></td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Adjudicated</span><span>Ded. applied: $0 (met)</span><span>OOP YTD after: $476.00</span><span>EFT: 03/22/2025</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout"><strong>CARC and RARC table maintenance</strong>CARC and RARC codes are updated by the X12 Committee each January 1. All tables must be updated before the new year begins. Plans that do not update these tables on schedule generate non-compliant denial messages that may be rejected by provider billing systems and clearinghouses, creating a claims submission loop that delays payments and generates unnecessary provider calls.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch5')">&larr; Chapter 5</button><button class="primary" onclick="show('ch7')">Chapter 7, Dental Configuration &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 7 -->
+<div id="ch7" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">7</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 7</div><div class="ch-title">Dental Configuration</div></div>
+  </div>
+  <div class="body-text">
+    <p>Dental benefit configuration operates within the same structural framework as medical configuration but uses an entirely distinct code set, follows dental-specific coverage category logic, introduces frequency limitation tracking at the individual tooth level, and incorporates unique provisions such as the missing tooth clause and orthodontic lifetime maximums that have no equivalent in medical plans. Analysts who approach dental configuration by applying medical adjudication logic invariably produce incorrect results. The two disciplines must be treated as distinct domains even though they share the same underlying platform architecture.</p>
+
+    <h3>CDT code categories and coverage configuration</h3>
+    <div class="table-wrap"><table><thead><tr><th>Category</th><th>CDT Range</th><th>Common Procedures</th><th>Typical Coverage</th><th>Frequency Limit</th><th>Deductible</th></tr></thead><tbody>
+      <tr><td>Diagnostic</td><td>D0100 to D0999</td><td>D0120 periodic exam, D0150 comprehensive exam, D0274 bitewing x-rays</td><td>100%</td><td>2 exams per plan year</td><td>Waived</td></tr>
+      <tr><td>Preventive</td><td>D1000 to D1999</td><td>D1110 adult prophylaxis, D1120 child prophylaxis, D1351 sealants</td><td>100%</td><td>2 cleanings per plan year</td><td>Waived</td></tr>
+      <tr><td>Restorative</td><td>D2000 to D2999</td><td>D2140 amalgam 1-surface, D2391 resin composite 1-surface posterior</td><td>80% after deductible</td><td>1 per tooth surface per 24 months</td><td>Applies</td></tr>
+      <tr><td>Endodontics</td><td>D3000 to D3999</td><td>D3310 root canal anterior, D3330 root canal molar</td><td>80% after deductible</td><td>1 per tooth per lifetime</td><td>Applies</td></tr>
+      <tr><td>Periodontics</td><td>D4000 to D4999</td><td>D4341 scaling and root planing, D4910 periodontal maintenance</td><td>80% after deductible</td><td>4 perio maintenance visits per year</td><td>Applies</td></tr>
+      <tr><td>Prosthodontics (removable)</td><td>D5000 to D5899</td><td>D5110 complete denture upper, D5213 partial denture upper</td><td>50% after deductible</td><td>1 per arch per 60 months</td><td>Applies</td></tr>
+      <tr><td>Prosthodontics (fixed)</td><td>D6000 to D6999</td><td>D6010 implant, D6240 pontic resin-based composite</td><td>50% after deductible</td><td>1 per tooth per 60 months</td><td>Applies</td></tr>
+      <tr><td>Orthodontics</td><td>D8000 to D8999</td><td>D8080 comprehensive orthodontic treatment adolescent</td><td>50%, lifetime max applies</td><td>Once per lifetime</td><td>Typically waived</td></tr>
+    </tbody></table></div>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Dental frequency rule configuration and coverage matrix</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Dental Plan: DENTAL-BASIC-2025, Frequency Rules</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn">Plan Info</span><span class="mock-tb-btn active">Frequency Rules</span><span class="mock-tb-btn">Missing Tooth</span><span class="mock-tb-btn">Ortho Tracking</span><span class="mock-tb-btn">COB</span></div>
+          <div style="background:white;padding:10px 16px;">
+            <table class="mock-table"><thead><tr><th>CDT Category</th><th>Key Codes</th><th>Period</th><th>Limit</th><th>Coverage</th><th>Deductible</th></tr></thead><tbody>
+              <tr><td>Diagnostic</td><td>D0120, D0150</td><td>Plan year</td><td>2 exams</td><td><span class="mock-badge green">100%</span></td><td><span class="mock-badge gray">No</span></td></tr>
+              <tr><td>Preventive</td><td>D1110, D1120</td><td>Plan year</td><td>2 cleanings</td><td><span class="mock-badge green">100%</span></td><td><span class="mock-badge gray">No</span></td></tr>
+              <tr><td>Restorative</td><td>D2140 to D2394</td><td>24 months, per tooth</td><td>1 per surface</td><td><span class="mock-badge blue">80%</span></td><td><span class="mock-badge orange">Yes, $50 ind.</span></td></tr>
+              <tr><td>Endodontics</td><td>D3310 to D3330</td><td>Lifetime, per tooth</td><td>1 per tooth</td><td><span class="mock-badge blue">80%</span></td><td><span class="mock-badge orange">Yes</span></td></tr>
+              <tr><td>Prosthodontics</td><td>D5110 to D6999</td><td>60 months, per arch/tooth</td><td>1</td><td><span class="mock-badge orange">50%</span></td><td><span class="mock-badge orange">Yes</span></td></tr>
+              <tr><td>Orthodontics</td><td>D8080</td><td>Lifetime</td><td>1 course</td><td><span class="mock-badge orange">50%, $1,500 lifetime max</span></td><td><span class="mock-badge gray">No</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Active</span><span>Annual max: $2,000 per member</span><span>Ortho lifetime max: $1,500</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Missing tooth clause and orthodontic tracking</h3>
+    <p>The missing tooth clause (MTC) is one of the most legally sensitive provisions in dental benefit configuration. It excludes coverage for replacement of teeth that were extracted, lost, or absent before the member's dental coverage effective date. Configuring MTC requires three precisely executed steps. First, at enrollment, the plan must obtain disclosure of any teeth missing before coverage begins, typically through a dental enrollment questionnaire or a pre-treatment x-ray review coordinated with the member's dentist. Second, each missing tooth is recorded in the member's dental record by its ADA Universal Numbering System position (teeth 1 through 32, with wisdom teeth designated). Third, an adjudication rule is configured to deny prosthodontic claims for any tooth position flagged in the MTC record, regardless of the specific procedure performed or when the treatment occurs.</p>
+
+    <div class="callout-warn"><strong>MTC legal exposure warning</strong>Missing tooth clause denials are among the most frequently contested in dental plan litigation. Courts and state insurance commissioners have consistently ruled against payers that applied MTC without clear member disclosure at enrollment. Ensure MTC is prominently disclosed in the Summary of Benefits, the enrollment materials, and any pre-treatment estimate communications. Document the member's MTC disclosure response in the enrollment record and maintain it for the duration of the member's enrollment plus applicable retention periods.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch6')">&larr; Chapter 6</button><button class="primary" onclick="show('ch8')">Chapter 8, Billing and Premiums &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 8 -->
+<div id="ch8" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">8</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 8</div><div class="ch-title">Billing and Premiums</div></div>
+  </div>
+  <div class="body-text">
+    <p>Premium billing configuration governs the revenue collection engine of the payer organization. While claims configuration governs the outflow of funds to providers, billing configuration governs the inflow of premium payments from employer groups and individuals, and for TPAs, the invoicing of administrative fees to self-funded clients. Errors in billing configuration directly affect cash flow, member coverage continuity, regulatory standing (many states impose prompt premium credit and grace period requirements), and financial reporting accuracy. Premium billing is also a member-facing function: errors in invoices are among the most common drivers of employer and member complaints.</p>
+
+    <h3>The premium billing cycle in detail</h3>
+    <p>Premium invoices are generated monthly in advance of the coverage month. The billing configuration specifies: the invoice generation date (typically 15 to 20 days before the coverage month begins, giving employers time to reconcile and remit), the premium due date (typically the first of the coverage month), the grace period (the number of days after the due date that coverage remains active despite non-payment), and the termination trigger date (the date on which the system initiates a coverage termination transaction if premium has not been received).</p>
+    <p>The invoice itself is a roster-based document listing every enrolled member (subscriber and dependents) with their plan assignment, coverage tier, and applicable premium rate. Premium rates are stored in a rate table that must be configured by plan year, coverage tier, and in some plans by age band (age-rated plans) or geographic rating area (marketplace plans). Rate table accuracy is critical: a rate entered with a single transposed digit can result in either significant under-billing or over-billing across an entire employer group for a full plan year.</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Group premium invoice and billing management screen</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Billing: GRP-00451 Acme Corporation, Invoice INV-2025-03</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Invoice</span><span class="mock-tb-btn">Roster</span><span class="mock-tb-btn">Payments</span><span class="mock-tb-btn">Adjustments</span><span class="mock-tb-btn">Grace Period</span><span class="mock-tb-btn">History</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-row"><span class="mock-label">Invoice ID</span><span class="mock-field">INV-2025-03</span><span class="mock-label" style="margin-left:8px">Coverage Month</span><span class="mock-field">March 2025</span></div>
+            <div class="mock-row"><span class="mock-label">Group</span><span class="mock-field">Acme Corporation (GRP-00451)</span></div>
+            <div class="mock-row"><span class="mock-label">Invoice Date</span><span class="mock-field">02/15/2025</span><span class="mock-label" style="margin-left:8px">Due Date</span><span class="mock-field">03/01/2025</span></div>
+            <div class="mock-row"><span class="mock-label">Total Premium</span><span class="mock-field" style="color:#044d38;font-weight:700">$248,450.00</span><span class="mock-label" style="margin-left:8px">Status</span><span class="mock-field"><span class="mock-badge green">Paid in Full</span></span></div>
+            <div class="mock-row"><span class="mock-label">Grace Period</span><span class="mock-field">30 days (expires 03/31/2025)</span><span class="mock-label" style="margin-left:8px">Retro Limit</span><span class="mock-field">90 days</span></div>
+            <div style="margin-top:8px"><table class="mock-table"><thead><tr><th>Coverage Tier</th><th>Members</th><th>Monthly Rate</th><th>Subtotal</th></tr></thead><tbody>
+              <tr><td>Employee Only</td><td>180</td><td>$450.00</td><td>$81,000.00</td></tr>
+              <tr><td>Employee plus Spouse</td><td>92</td><td>$890.00</td><td>$81,880.00</td></tr>
+              <tr><td>Employee plus Children</td><td>75</td><td>$780.00</td><td>$58,500.00</td></tr>
+              <tr><td>Family (all dependents)</td><td>65</td><td>$1,042.00</td><td>$67,730.00</td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; EFT received 02/28/2025</span><span>EFT Conf: EFT-882211</span><span>Applied to: MARCH-2025</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Grace periods, retroactivity and the ACA 90-day rule</h3>
+    <p>Grace period configuration is among the most consequential billing settings because it directly governs how long a member's coverage remains active when premium payments stop. For <strong>ACA marketplace enrollees receiving Advance Premium Tax Credits (APTC)</strong>, the federal government mandates a 90-day grace period. During this grace period, the plan must continue to pay claims for the first month of non-payment, but may pend (hold without paying) claims for the second and third months. If the full overdue premium is not paid by the end of the grace period, coverage is terminated retroactively to the end of the first month, and all claims pended during months two and three are denied. This complex logic must be precisely configured in the billing and claims modules and must work in concert.</p>
+    <p>For <strong>commercial group plans</strong>, grace periods are contractually defined and state-regulated. Most state insurance codes require a minimum grace period of 30 days for group plans. Some states require longer periods or impose additional notice requirements before coverage can be terminated for non-payment. The billing module must enforce these minimums as a floor, not merely as a default.</p>
+
+    <div class="callout-warn"><strong>Retroactivity limit configuration is essential</strong>Without a configured retro limit, enrollment changes can be backdated indefinitely. A retro enrollment two years back, if approved without restriction, means the system must process or reprocess all claims for that member for the entire retroactive period. At high-cost specialties this can represent hundreds of thousands of dollars in unbudgeted claim liability. Configure retro limits in alignment with your plan documents (typically 60 to 90 days) and require senior management approval for any exception.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch7')">&larr; Chapter 7</button><button class="primary" onclick="show('ch9')">Chapter 9, Reporting and Analytics &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 9 -->
+<div id="ch9" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">9</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 9</div><div class="ch-title">Reporting and Analytics</div></div>
+  </div>
+  <div class="body-text">
+    <p>The reporting and analytics module is where the data captured through every other module is transformed into actionable operational intelligence, financial visibility, clinical insights, and regulatory compliance evidence. Reporting serves multiple audiences simultaneously with fundamentally different information needs: operations teams monitoring daily workflow, finance leadership managing medical costs and premium revenue, compliance officers preparing for audits and regulatory filings, employer groups reviewing utilization and plan performance, clinical teams identifying quality gaps and care management opportunities, and CMS analysts evaluating encounter data and risk adjustment submissions. The facet analyst's role in reporting is to ensure that every field that flows into a report is accurately configured at its source, that report access is appropriately controlled for HIPAA compliance, and that regulatory reports are generated on time with complete and accurate data.</p>
+
+    <h3>Operational reporting essentials</h3>
+    <p>Operational reports track the day-to-day performance of the claims adjudication engine, the enrollment system, and the billing function. Critical operational metrics include claims inventory aging by status (received, pended, adjudicated, paid, denied), processing turnaround times measured against state prompt pay requirements, edit failure rates by edit type (to identify configuration errors driving systematic failures), prior authorization queue aging (to ensure compliance with turnaround time mandates), and eligibility match rates (the percentage of incoming claims that successfully match an active member record on the date of service). A consistently low eligibility match rate signals a systemic enrollment data quality problem that will generate a wave of claims denials.</p>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Claims analytics dashboard and denial reason analysis</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Reports Module, Claims Analytics, March 2025</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Dashboard</span><span class="mock-tb-btn">Claims Reports</span><span class="mock-tb-btn">Member Reports</span><span class="mock-tb-btn">Financial</span><span class="mock-tb-btn">Regulatory</span><span class="mock-tb-btn">Export</span></div>
+          <div style="background:white;padding:14px 16px;">
+            <div class="mock-grid" style="grid-template-columns:repeat(4,1fr)">
+              <div class="mock-stat"><div class="val">18,441</div><div class="lbl">Claims Received</div></div>
+              <div class="mock-stat"><div class="val">17,890</div><div class="lbl">Claims Paid</div></div>
+              <div class="mock-stat"><div class="val">412</div><div class="lbl">Claims Denied</div></div>
+              <div class="mock-stat"><div class="val">$4.2M</div><div class="lbl">Total Paid</div></div>
+            </div>
+            <div style="margin-top:8px;font-size:10px;font-weight:700;color:#1a1a3e">TOP 5 DENIAL REASONS, MARCH 2025</div>
+            <table class="mock-table" style="margin-top:4px"><thead><tr><th>CARC</th><th>Description</th><th>Count</th><th>% of Denials</th><th>Configuration Action</th></tr></thead><tbody>
+              <tr><td>197</td><td>PA required, not obtained</td><td>142</td><td>34.5%</td><td><span class="mock-badge orange">Review PA rule scope</span></td></tr>
+              <tr><td>29</td><td>Timely filing limit exceeded</td><td>98</td><td>23.8%</td><td><span class="mock-badge gray">Provider education</span></td></tr>
+              <tr><td>27</td><td>Member not eligible on DOS</td><td>74</td><td>18.0%</td><td><span class="mock-badge orange">Audit enrollment dates</span></td></tr>
+              <tr><td>4</td><td>Service inconsistent with modifier</td><td>55</td><td>13.4%</td><td><span class="mock-badge gray">Coding review</span></td></tr>
+              <tr><td>18</td><td>Duplicate claim submission</td><td>43</td><td>10.4%</td><td><span class="mock-badge gray">Monitor</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Data: 03/31/2025</span><span>MLR YTD: 82.4%</span><span>Prompt Pay: 96.8% within 30 days</span><span>Export: CSV, PDF, XLSX</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Regulatory reporting requirements and deadlines</h3>
+    <div class="table-wrap"><table><thead><tr><th>Report</th><th>Frequency</th><th>Recipient</th><th>Key Configuration Dependency</th></tr></thead><tbody>
+      <tr><td>Encounter Data (EDPS)</td><td>Monthly</td><td>CMS, for MA and Medicaid</td><td>Claim type codes, encounter format settings, diagnosis and procedure code accuracy</td></tr>
+      <tr><td>Risk Adjustment Data (RADV audit)</td><td>Annual (CMS audit schedule)</td><td>CMS</td><td>HCC diagnosis capture on encounter data, member risk score tracking</td></tr>
+      <tr><td>HEDIS Data Submission</td><td>Annual (March to June)</td><td>NCQA, CMS, state regulators</td><td>Quality measure denominator and numerator configuration, claims data completeness</td></tr>
+      <tr><td>Medical Loss Ratio (MLR) Filing</td><td>Annual (July 31 for prior year)</td><td>CMS and state DOI</td><td>Claims, premium, and quality improvement expense categorization</td></tr>
+      <tr><td>1095-B and 1095-C Tax Forms</td><td>Annual (March 31 electronic)</td><td>IRS and members</td><td>Member enrollment data accuracy, coverage month tracking, employer information</td></tr>
+      <tr><td>State Prompt Pay Report</td><td>Quarterly or annual by state</td><td>State Department of Insurance</td><td>Claims processing timestamp accuracy, payment date and EFT confirmation tracking</td></tr>
+      <tr><td>CMS STARS Quality Data</td><td>Annual (MA plans)</td><td>CMS</td><td>Quality measure data feeds, HEDIS supplemental data configuration</td></tr>
+    </tbody></table></div>
+
+    <div class="callout-success"><strong>Best practice: automate regulatory report generation</strong>Configure scheduled report generation for all time-sensitive regulatory submissions with automated validation checks that flag data quality issues at least 30 days before the submission deadline. A missed or deficient regulatory submission is a CMS compliance finding that can affect plan quality ratings, Star ratings, and in severe cases plan contract termination.</div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch8')">&larr; Chapter 8</button><button class="primary" onclick="show('ch10')">Chapter 10, Compliance and Governance &rarr;</button></div>
+</div>
+
+<!-- CHAPTER 10 -->
+<div id="ch10" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block">10</div>
+    <div class="ch-meta"><div class="ch-label-top">Chapter 10</div><div class="ch-title">Compliance, Security and Governance</div></div>
+  </div>
+  <div class="body-text">
+    <p>Compliance, security, and governance are not features that can be added to a facet implementation after the fact. They are structural requirements that must be embedded in every configuration decision from the first day of implementation. An analyst who treats compliance as someone else's responsibility, or as a layer of review that happens after configuration is complete, will consistently produce work that creates organizational risk. The most effective configuration analysts are those who understand the regulatory framework governing their work deeply enough to make compliance the first consideration, not the last.</p>
+
+    <h3>HIPAA technical safeguards: what they mean in the platform</h3>
+    <p>The HIPAA Security Rule requires covered entities to implement specific technical safeguards protecting electronic protected health information (ePHI). In the facet platform, each of these safeguards translates to a specific configuration requirement:</p>
+    <ul>
+      <li><strong>Unique user identification:</strong> Every platform user must have an individual, non-shared login ID. Shared accounts make audit trails meaningless and are a direct HIPAA violation.</li>
+      <li><strong>Automatic session logoff:</strong> Sessions must terminate automatically after a period of inactivity, typically configured at 15 to 30 minutes. The timeout value must be documented in the organization's security policies.</li>
+      <li><strong>Audit controls:</strong> The platform must log every access to a PHI-containing record, every modification, every report generation, and every failed login attempt. Log retention must be set for a minimum of six years.</li>
+      <li><strong>Transmission security:</strong> All data transmitted between the platform and external systems (clearinghouses, employers, pharmacies) must be encrypted using a minimum of TLS 1.2. TLS 1.3 is recommended.</li>
+      <li><strong>Integrity controls:</strong> The platform must have mechanisms to detect unauthorized record modification. Transaction checksums and audit log integrity monitoring are the standard approaches.</li>
+      <li><strong>Access control:</strong> Role-based access control (RBAC) must restrict each user to only the data and functions required for their job duties, consistent with HIPAA's minimum necessary standard.</li>
+    </ul>
+
+    <div class="figure">
+      <div class="figure-caption"><span class="badge">Screen</span>Role-based access control matrix and audit trail</div>
+      <div class="figure-body">
+        <div class="software-mock">
+          <div class="mock-titlebar"><div class="mock-dot red"></div><div class="mock-dot yellow"></div><div class="mock-dot green"></div><span class="mock-title">Security Administration, RBAC Configuration</span></div>
+          <div class="mock-toolbar"><span class="mock-tb-btn active">Roles</span><span class="mock-tb-btn">Users</span><span class="mock-tb-btn">Permissions</span><span class="mock-tb-btn">Audit Log</span><span class="mock-tb-btn">Sessions</span><span class="mock-tb-btn">Password Policy</span></div>
+          <div style="background:white;padding:12px 16px;">
+            <table class="mock-table"><thead><tr><th>Permission</th><th>Claims Examiner</th><th>Benefits Admin</th><th>Compliance Officer</th><th>Read Only</th><th>System Admin</th></tr></thead><tbody>
+              <tr><td>Member view</td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge green">Yes</span></td></tr>
+              <tr><td>Member edit</td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge green">Yes</span></td></tr>
+              <tr><td>Claims adjudicate</td><td><span class="mock-badge green">Yes</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge orange">Limited</span></td></tr>
+              <tr><td>PHI reports</td><td><span class="mock-badge orange">Limited</span></td><td><span class="mock-badge orange">Limited</span></td><td><span class="mock-badge green">Full</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge green">Full</span></td></tr>
+              <tr><td>System configuration</td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge red">No</span></td><td><span class="mock-badge green">Yes</span></td></tr>
+            </tbody></table>
+            <div style="margin-top:8px;font-size:10px;font-weight:700;color:#1a1a3e">RECENT AUDIT LOG ENTRIES</div>
+            <table class="mock-table" style="margin-top:4px"><thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Record</th><th>Outcome</th></tr></thead><tbody>
+              <tr><td>2025-03-15 09:14:22</td><td>jsmith</td><td>View member record</td><td>MBR-00112</td><td><span class="mock-badge green">Success</span></td></tr>
+              <tr><td>2025-03-15 09:08:11</td><td>rdavis</td><td>Adjudicate claim</td><td>CLM-2025-00889</td><td><span class="mock-badge green">Success</span></td></tr>
+              <tr><td>2025-03-15 08:52:04</td><td>bwilson</td><td>Export PHI report</td><td>RPT-MEMBER-DETAIL</td><td><span class="mock-badge orange">Logged, flagged</span></td></tr>
+            </tbody></table>
+          </div>
+          <div class="mock-status-bar"><span class="ok">&#9679; Audit: ON</span><span>Retention: 7 years</span><span>Encryption: AES-256, TLS 1.3</span><span>Timeout: 20 min</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Change control and governance in production</h3>
+    <p>Production configuration changes must follow a formal change control process without exception. Every change begins with a Change Request (CR) document that captures the business justification, the specific configuration changes to be made (including before and after field values), the modules affected, a downstream impact assessment, the testing plan, the rollback procedure if the change must be reversed, and the required approvers. Depending on the nature and scope of the change, approvers may include the configuration team lead, the compliance officer, the medical director (for PA rule changes), the CFO (for fee schedule changes affecting payment rates), and the IT security officer (for access control changes).</p>
+    <p>Once approved, the change follows the standard promotion pathway: DEV, then SIT validation, then UAT sign-off, then scheduled production deployment. The production deployment is logged with the exact timestamp, the user who executed the change, the specific tables and fields modified, and the before and after values. This complete audit trail must be retained for a minimum of seven years and must be producible on demand during CMS audits, state examinations, or litigation discovery. Plans that cannot produce this documentation during an audit face significant findings.</p>
+
+    <div class="contact-box">
+      <div class="cb-text">
+        <div class="cb-title">Ready to practice in a live environment?</div>
+        <div class="cb-body">Echolink Solutions provides configured training sandbox environments for all 10 module areas covered in this textbook. Our demo environments include realistic test data, pre-built configuration scenarios, and hands-on exercises that reinforce every concept in this book. Contact us to schedule a demo and get your team configured for success.</div>
+      </div>
+      <a class="cb-email" href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a>
+    </div>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch9')">&larr; Chapter 9</button><button class="primary" onclick="show('conclusion')">Conclusion &rarr;</button></div>
+</div>
+
+<!-- CONCLUSION -->
+<div id="conclusion" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block" style="font-size:13px">END</div>
+    <div class="ch-meta"><div class="ch-label-top">Conclusion</div><div class="ch-title">Conclusion</div></div>
+  </div>
+  <div class="body-text">
+    <p>Healthcare facet configuration is a discipline that demands both technical precision and deep domain awareness in equal measure. Across the ten chapters of this textbook, we have traced the full configuration lifecycle of a payer platform from its foundational regulatory context through its member, provider, benefit, claims, dental, billing, reporting, and compliance modules. In each domain, the consistent theme has been this: every configuration decision is consequential, and every configuration analyst is a steward of the operational, financial, and clinical integrity of the organization they serve.</p>
+    <p>Echolink Solutions Training Academy has built its program on the conviction that great configuration analysts are not system operators. They are domain professionals who understand the full business, clinical, and regulatory context of every field they configure, who anticipate downstream consequences before making changes, who treat governance as a professional standard rather than a bureaucratic burden, and who commit to continuous learning in a regulatory environment that never stops evolving.</p>
+
+    <div class="info-cards">
+      <div class="info-card"><div class="ic-icon">&#128274;</div><div class="ic-title">Accuracy above all</div><div class="ic-body">Test everything in DEV and SIT before production. One misconfigured field can affect thousands of claims and millions of dollars. There are no trivial changes in a payer system.</div></div>
+      <div class="info-card"><div class="ic-icon">&#128196;</div><div class="ic-title">Document every change</div><div class="ic-body">Configuration is a governed artifact. Every production change needs a change request, an approval chain, test evidence, and an audit trail. No exceptions, ever.</div></div>
+      <div class="info-card"><div class="ic-icon">&#128203;</div><div class="ic-title">Regulatory awareness first</div><div class="ic-body">Every configuration decision must be evaluated against HIPAA, ACA, ERISA, CMS rules, and state regulations before it reaches production. Compliance is not a review step. It is a design principle.</div></div>
+      <div class="info-card"><div class="ic-icon">&#128218;</div><div class="ic-title">Never stop learning</div><div class="ic-body">Regulations change annually. Code sets update on fixed schedules. Plan designs evolve. The best analysts treat continuing education as a professional obligation, not an optional activity.</div></div>
+    </div>
+
+    <div class="contact-box">
+      <div class="cb-text">
+        <div class="cb-title">Continue your Echolink Solutions journey</div>
+        <div class="cb-body">This textbook is the foundation. Echolink Solutions offers advanced configuration workshops, claims adjudication deep-dive labs, regulatory compliance boot camps, Medicare Advantage-specific training, and full certification programs. We have trained analysts at more than 50 payer organizations and we are ready to support yours. If you need access to a demo environment tailored to your specific plan types and configuration challenges, reach out to our team today.</div>
+      </div>
+      <a class="cb-email" href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a>
+    </div>
+
+    <div class="divider"></div>
+    <p style="font-size:14px;color:var(--muted)">Proceed to the <strong style="color:var(--navy)">40-point knowledge assessment</strong> to test your understanding of the material in this textbook. A score of 80% or higher, 32 correct out of 40, earns Echolink Solutions certification credit. Correct answers and explanations are shown immediately after submission.</p>
+  </div>
+  <div class="ch-nav"><button onclick="show('ch10')">&larr; Chapter 10</button><button class="primary" onclick="show('quiz')">Take the Knowledge Quiz &rarr;</button></div>
+</div>
+
+<!-- GLOSSARY -->
+<div id="glossary" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block" style="font-size:13px">REF</div>
+    <div class="ch-meta"><div class="ch-label-top">Reference</div><div class="ch-title">Glossary of Terms</div></div>
+  </div>
+  <p style="margin-bottom:1.5rem;color:var(--muted);font-size:14.5px;font-weight:400">Comprehensive definitions of all terminology used in healthcare facet systems, payer platforms, and insurance administration. Over 60 terms defined alphabetically.</p>
+  <div class="glossary-grid">
+    <div class="glossary-entry"><div class="glossary-term">ACA (Affordable Care Act)</div><div class="glossary-def">Federal health reform law enacted in 2010 establishing essential health benefits, metal tier plan structures, guaranteed issue, annual OOP maximum limits, no-cost preventive services, and marketplace exchanges.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Accumulator</div><div class="glossary-def">A system counter that tracks a member's year-to-date spending toward a deductible or out-of-pocket maximum threshold. Accumulators reset at the start of each plan year.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Adjudication</div><div class="glossary-def">The automated process by which a claim is evaluated against eligibility, provider status, benefit configuration, and fee schedules to produce a payment determination or denial with a specific reason code.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Allowed Amount</div><div class="glossary-def">The maximum amount a payer will reimburse for a covered service, determined by the applicable fee schedule or contracted rate. The difference between billed charges and the allowed amount is the contractual adjustment, which the provider may not bill to the member under a network agreement.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">APTC (Advance Premium Tax Credit)</div><div class="glossary-def">Federal tax credits paid in advance to eligible marketplace enrollees to subsidize monthly premiums. APTC is reconciled against actual annual income on the enrollee's federal tax return, with repayment required if income exceeds estimates.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">ASO (Administrative Services Only)</div><div class="glossary-def">A contract arrangement where a self-funded employer retains financial responsibility for member claims and a TPA or carrier provides administrative services only. The employer owns the claim fund; the administrator processes claims against it.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Authorization (Prior Auth)</div><div class="glossary-def">Advance payer approval required before certain services are rendered. PA rules are configured at the benefit line level by procedure code range, provider type, and clinical criteria set. Claims submitted without required authorizations receive a denial with CARC 197 or CARC 15.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Benefit Line</div><div class="glossary-def">The lowest level of the benefit plan hierarchy in the facet platform. Each benefit line governs a specific service or service category with its own cost-sharing structure, frequency limits, exclusions, and authorization requirements.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Birthday Rule</div><div class="glossary-def">The COB determination method for dependent children: the plan of the parent whose birthday (month and day only, not year) falls earlier in the calendar year is primary. When birthdays fall on the same day, the plan that has covered the parent longer is primary.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">CARC (Claim Adjustment Reason Code)</div><div class="glossary-def">A standardized X12 code on the remittance advice that explains why a claim or service line was adjusted, denied, or reduced in payment. Updated annually by the X12 Committee. Required on all HIPAA-compliant electronic remittances.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Capitation</div><div class="glossary-def">A reimbursement model in which a provider receives a fixed per-member-per-month (PMPM) payment regardless of the number or type of services rendered. Used primarily for PCP reimbursement in HMO plans. The provider assumes utilization risk above the capitated rate.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">CDT (Current Dental Terminology)</div><div class="glossary-def">The ADA-published code set for dental procedures. CDT codes begin with D followed by four digits and are organized into coverage categories. Updated annually each January 1.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">CMS-1500</div><div class="glossary-def">The standard paper claim form for professional services submitted by physicians and other non-institutional providers. The electronic equivalent is the ANSI ASC X12 837P transaction set.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">COB (Coordination of Benefits)</div><div class="glossary-def">The process for determining payment order when a member is covered by more than one health plan. COB prevents duplicate payment for the same service. The three coordination methods are non-duplication, maintenance of benefits, and carve-out.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Coinsurance</div><div class="glossary-def">The percentage of the allowed amount a member pays after satisfying the deductible. An 80/20 coinsurance means the payer pays 80% and the member pays 20% of the allowed amount for covered services.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Copay</div><div class="glossary-def">A fixed dollar amount the member pays at the time of service, independent of the total allowed amount. Copays typically apply to office visits and pharmacy and may or may not apply toward the deductible, depending on plan design.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">CPT (Current Procedural Terminology)</div><div class="glossary-def">The AMA-published code set of 5-digit numeric codes identifying medical, surgical, and diagnostic procedures. Updated annually each January 1. Used on professional claims (CMS-1500) for adjudication and fee schedule lookup.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Credentialing</div><div class="glossary-def">The process of verifying a provider's education, training, licensure, board certification, malpractice history, and practice information before admission to the payer's network. Recredentialing is required every two years under most accreditation standards.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">DEA Number</div><div class="glossary-def">Drug Enforcement Administration registration number required for providers who prescribe Schedule II through V controlled substances. DEA numbers must be verified during credentialing and tracked for expiration.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Deductible</div><div class="glossary-def">The dollar amount a member must pay for covered services before the plan begins sharing costs. Plans may have separate in-network and out-of-network deductibles, and services subject to a copay (such as preventive care) are typically excluded from the deductible.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">DRG (Diagnosis-Related Group)</div><div class="glossary-def">A patient classification system reimbursing hospitals a fixed amount per inpatient discharge based on diagnosis, procedure, age, and discharge status. DRG weights and base rates are configured in the institutional fee schedule module.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">EFT (Electronic Funds Transfer)</div><div class="glossary-def">Electronic transfer of claim payment funds from the payer to the provider's bank account. EFT eliminates paper check processing, accelerates payment reconciliation, and generates a digital audit trail.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Eligibility</div><div class="glossary-def">The real-time or point-in-time determination that a member has active coverage under a specific health plan for a specific service type on a specific date. Eligibility must be validated against enrollment effective and termination dates, not a static current status flag.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Embedded Accumulator</div><div class="glossary-def">An accumulator structure in which each family member has their own individual deductible and OOP maximum embedded within the family aggregate. Required by the ACA for all non-grandfathered plans. Ensures no individual member pays more than the individual OOP limit before full coverage applies.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Encounter Data</div><div class="glossary-def">Claims-like records submitted by managed care organizations to CMS or state Medicaid agencies documenting services rendered to enrollees. Used for risk adjustment, HEDIS reporting, and quality monitoring. Encounter data completeness directly affects risk score accuracy and plan revenue.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">EOB (Explanation of Benefits)</div><div class="glossary-def">A document sent to members after claims processing explaining the services received, the amounts billed and allowed, the payer's payment, and the member's remaining cost-sharing liability. Required by most state regulations to be delivered within a defined timeframe after claim adjudication.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">ePHI (Electronic Protected Health Information)</div><div class="glossary-def">Individually identifiable health information stored or transmitted electronically, subject to HIPAA Security Rule technical safeguards including encryption, access controls, audit logging, and integrity controls.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">ERA (Electronic Remittance Advice)</div><div class="glossary-def">The ANSI ASC X12 835 transaction sent to providers detailing claim payment or denial decisions. Enables automated payment posting in provider billing systems, replacing paper remittance advices.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">ERISA (Employee Retirement Income Security Act)</div><div class="glossary-def">Federal law governing self-funded employer benefit plans. ERISA preempts most state insurance laws for self-funded plans, allowing national employers to offer uniform benefits across all states without compliance with individual state insurance mandates.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Fee Schedule</div><div class="glossary-def">A schedule of maximum reimbursement amounts for specific services, keyed to procedure codes, place of service, and provider type. Fee schedules have defined effective and termination dates and must be linked to specific provider-plan relationships in the system.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Frequency Limit</div><div class="glossary-def">A dental benefit provision limiting how often a specific service is covered within a defined period (plan year, 24 months, 60 months, or lifetime). The facet system tracks service history by CDT code and tooth position to enforce frequency rules during adjudication.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Grace Period</div><div class="glossary-def">The number of days after a premium due date during which coverage remains active despite non-payment. ACA marketplace plans with APTC have a federally mandated 90-day grace period. Commercial group plans typically have 30-day grace periods set by contract and state regulation.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">GPCI (Geographic Practice Cost Index)</div><div class="glossary-def">A CMS adjustment factor applied to each component of the RBRVS RVU calculation to account for geographic variation in physician practice costs, employee wages, and malpractice costs. Applied at the Medicare payment locality level.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">HCPCS (Healthcare Common Procedure Coding System)</div><div class="glossary-def">A code set extending CPT Level I with Level II alphanumeric codes identifying supplies, equipment, drugs, and services not covered by CPT. HCPCS Level II codes begin with a letter and are maintained quarterly by CMS.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">HEDIS (Healthcare Effectiveness Data and Information Set)</div><div class="glossary-def">NCQA's standardized set of quality performance measures used to evaluate health plan effectiveness across prevention, chronic disease management, behavioral health, and access domains. Required for commercial NCQA accreditation and CMS STARS rating programs.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">HIPAA</div><div class="glossary-def">Health Insurance Portability and Accountability Act of 1996. Establishes national standards for PHI privacy (Privacy Rule), ePHI security (Security Rule), and electronic transaction formats and code sets (Transaction and Code Set Rule).</div></div>
+    <div class="glossary-entry"><div class="glossary-term">ICD-10-CM</div><div class="glossary-def">International Classification of Diseases, 10th Revision, Clinical Modification. The US diagnosis code set required on all claims. Published by CMS and the CDC, updated annually each October 1. Contains over 72,000 codes organized in a hierarchical alphanumeric structure.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">IBNR (Incurred But Not Reported)</div><div class="glossary-def">Claims for services already rendered but not yet submitted to the payer. IBNR represents a financial liability that must be estimated using actuarial methods and reserved on the balance sheet for accurate financial reporting and regulatory capital requirements.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">LOB (Line of Business)</div><div class="glossary-def">A distinct market segment or product type administered by a payer: commercial fully insured, self-funded ASO, Medicare Advantage, Medicare Part D, Medicaid managed care, ACA marketplace, or dental stand-alone. Each LOB has distinct regulatory requirements and configuration rules.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Medicare Advantage (MA, Part C)</div><div class="glossary-def">Medicare health plan option allowing beneficiaries to receive Part A and Part B benefits through CMS-contracted private plans. Plans receive monthly capitation payments from CMS based on member risk scores. Governed by extensive CMS regulations including annual bid requirements and STARS quality ratings.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Missing Tooth Clause (MTC)</div><div class="glossary-def">A dental plan provision excluding coverage for replacement of teeth that were lost or absent before the member's dental coverage effective date. Requires tooth-level configuration in the member's dental record and adjudication rules keyed to ADA Universal Numbering System positions.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">MLR (Medical Loss Ratio)</div><div class="glossary-def">The percentage of premium revenue a health plan spends on clinical care and quality improvement activities. The ACA mandates a minimum of 80% for individual and small group markets and 85% for large group. Plans that fall below the applicable threshold must rebate the difference to enrollees.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">MUE (Medically Unlikely Edit)</div><div class="glossary-def">CMS-developed edit rules establishing the maximum number of units of a service that can reasonably be billed per claim per date of service per provider. MUEs prevent billing errors and unbundling. Applied during claims adjudication in the clinical editing layer.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">NDC (National Drug Code)</div><div class="glossary-def">An 11-digit identifier for prescription drug products consisting of a labeler code, product code, and package code. Used in pharmacy claims to uniquely identify the drug, strength, dosage form, and package size dispensed.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Network Tier</div><div class="glossary-def">A classification of a provider's relationship to a specific plan, determining member cost-sharing levels and payer reimbursement rates. Network tier is a property of the provider-plan relationship record, not the provider record itself.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">No Surprises Act</div><div class="glossary-def">Federal law effective January 1, 2022 prohibiting unexpected out-of-network billing for emergency services and certain non-emergency services at in-network facilities without advance notice and patient consent. Established an independent dispute resolution process for contested bills.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">NPI (National Provider Identifier)</div><div class="glossary-def">A unique 10-digit identifier issued by CMS to healthcare providers. Type 1 NPIs identify individual practitioners; Type 2 NPIs identify organizations. Required on all HIPAA-covered electronic healthcare transactions.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">NUCC (National Uniform Claim Committee)</div><div class="glossary-def">The organization that maintains the Health Care Provider Taxonomy code set, containing over 800 codes classifying provider specialties and organization types. Updated semi-annually. Used in provider credentialing and claims specialty validation.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">OEP (Open Enrollment Period)</div><div class="glossary-def">The annual window during which eligible individuals may enroll in or change their health plan coverage without requiring a qualifying life event. OEP dates are configured per group in the enrollment rules module and must match the group's governing plan documents.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">OOP Maximum (Out-of-Pocket Maximum)</div><div class="glossary-def">The maximum dollar amount a member pays in cost-sharing per plan year, after which the plan pays 100% of covered in-network services. The ACA sets annual limits on individual OOP maximums for non-grandfathered plans, adjusted annually by CMS.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">PCP (Primary Care Provider)</div><div class="glossary-def">The designated primary care clinician for a member, required in HMO plans as the gatekeeper for referrals to specialists and other services. PCP assignment is tracked in the member record and directly affects HMO claims adjudication and quality measure attribution.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">PHI (Protected Health Information)</div><div class="glossary-def">Any individually identifiable information relating to a person's past, present, or future physical or mental health condition, healthcare provision, or payment for healthcare, protected under the HIPAA Privacy Rule.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">PMPM (Per Member Per Month)</div><div class="glossary-def">The standard unit of financial measurement in managed care. PMPM figures represent average cost or revenue divided by total member months. Used in capitation contracts, premium development, MLR calculation, and plan performance benchmarking.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">QLE (Qualifying Life Event)</div><div class="glossary-def">A life change that entitles a member to a Special Enrollment Period outside of open enrollment. Common QLEs include marriage, birth or adoption of a child, loss of other coverage, divorce, and change in employment status. Documentation is required to validate each QLE.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">RARC (Remittance Advice Remark Code)</div><div class="glossary-def">A supplementary X12 code on the remittance advice providing additional detail about the claim adjustment identified by the CARC. RARC codes are maintained and updated by CMS annually and must be kept current in the platform's reference tables.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">RBRVS (Resource-Based Relative Value Scale)</div><div class="glossary-def">The CMS fee schedule methodology for physician services. Calculates reimbursement by multiplying relative value units (RVUs) for physician work, practice expense, and malpractice by a conversion factor and adjusting by geographic GPCI values.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Retroactivity</div><div class="glossary-def">The ability to backdate enrollment, termination, or coverage changes to a date prior to the transaction date. Retroactivity limits are configured to control how far back changes may be applied, balancing operational flexibility against financial exposure and fraud risk.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">SEP (Special Enrollment Period)</div><div class="glossary-def">A limited enrollment window triggered by a qualifying life event. SEP duration varies by event type and regulatory context: 30 days for most commercial QLEs, 60 days for ACA marketplace loss of coverage events, and 60 days for Medicare qualifying events.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Stop-Loss Insurance</div><div class="glossary-def">Reinsurance purchased by self-funded employers to cap their financial exposure. Specific stop-loss applies above a per-member annual threshold. Aggregate stop-loss applies when total plan claims exceed a percentage of expected claims for the covered population.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Subscriber</div><div class="glossary-def">The primary policyholder under whose coverage dependents are enrolled. The subscriber holds the group billing account relationship and is the primary payer of record for premium billing purposes. Subscriber ID links the household to the group contract.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">TFL (Timely Filing Limit)</div><div class="glossary-def">The contractually defined deadline by which a provider must submit a claim after the date of service. TFL values are configured by plan and LOB. Commercial plans typically require 90 to 180 days; Medicare requires 12 months. Claims received after TFL are denied with CARC 29.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">TPA (Third-Party Administrator)</div><div class="glossary-def">An organization that administers health plan functions including claims processing, eligibility management, and premium billing on behalf of a self-funded employer without assuming insurance risk. The employer funds the claims; the TPA processes them.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">TrOOP (True Out-of-Pocket)</div><div class="glossary-def">The Medicare Part D accumulator tracking spending that counts toward the catastrophic coverage threshold. TrOOP includes the member's payments and manufacturer discounts but excludes amounts paid by other insurance. TrOOP tracking must be configured separately from medical accumulators.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">UB-04</div><div class="glossary-def">The standard paper claim form for institutional providers (hospitals, SNFs, home health agencies, outpatient hospital departments). The electronic equivalent is the ANSI ASC X12 837I transaction. Contains revenue codes, occurrence codes, and value codes in addition to procedure codes.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">UCR (Usual, Customary, and Reasonable)</div><div class="glossary-def">A benchmark for setting out-of-network allowed amounts based on the prevailing rate for a service in a specific geographic area. UCR percentile selection and the database vendor used must be documented in plan documents and disclosed to members.</div></div>
+    <div class="glossary-entry"><div class="glossary-term">Waiting Period</div><div class="glossary-def">The time between an employee's hire date and eligibility for employer-sponsored health benefits. The ACA limits waiting periods to a maximum of 90 days for applicable large employers. Waiting period length is configured as an enrollment rule parameter in the member module.</div></div>
+  </div>
+  <div class="ch-nav"><button onclick="show('conclusion')">&larr; Conclusion</button><button class="primary" onclick="show('quiz')">Take the Knowledge Quiz &rarr;</button></div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="page">
+  <div class="ch-header">
+    <div class="ch-num-block" style="font-size:12px;letter-spacing:-.5px">QUIZ</div>
+    <div class="ch-meta"><div class="ch-label-top">Assessment</div><div class="ch-title">40-Point Knowledge Quiz</div></div>
+  </div>
+  <div class="body-text">
+    <div class="callout-info"><strong>Passing score: 80% (32 out of 40 correct)</strong>This quiz covers all 10 chapters plus the introduction. Select the best answer for each question. Submit when complete to see your score, correct answers, and which questions to review. A score of 32 or higher earns Echolink Solutions certification credit for this textbook module.</div>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="progress-bar" style="width:0%"></div></div>
+    <div class="quiz-counter" id="quiz-counter">Answer all 40 questions, then click Submit Quiz</div>
+    <div class="quiz-container" id="quiz-form"></div>
+    <div class="quiz-actions">
+      <button class="quiz-btn primary" onclick="submitQuiz()">Submit Quiz</button>
+      <button class="quiz-btn secondary" onclick="resetQuiz()">Reset and Retake</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.25rem;font-weight:700">Your final score</div>
+      <div class="result-score" id="result-score"></div>
+      <div class="result-label" id="result-label"></div>
+      <div class="result-msg" id="result-msg"></div>
+      <div id="result-review"></div>
+    </div>
+  </div>
+  <div class="ch-nav"><button onclick="show('glossary')">&larr; Glossary</button><button onclick="show('toc')">Back to Contents</button></div>
+</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  <img src="{logo_src}" alt="Echolink Solutions">
+  <span>Prepared by <strong>Echolink Solutions Training Academy</strong></span>
+  <span><a href="https://echolinksolutions.com">echolinksolutions.com</a> &nbsp;|&nbsp; <a href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a></span>
+  <span>Healthcare Facet Configuration, Insurance and Payer Systems</span>
+</footer>
+
+<script>
+const pages=['toc','intro','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','conclusion','glossary','quiz'];
+function show(id){
+  pages.forEach(p=>{
+    const el=document.getElementById(p);
+    if(el) el.classList.remove('visible');
+    const n=document.getElementById('nav-'+p);
+    if(n) n.classList.remove('active');
+  });
+  const t=document.getElementById(id);
+  if(t) t.classList.add('visible');
+  const n=document.getElementById('nav-'+id);
+  if(n) n.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const questions=[
+  {q:"What does the acronym TPA stand for in the healthcare payer context?",o:["Total Plan Administrator","Third-Party Administrator","Tertiary Payer Association","Technical Processing Agency"],a:1},
+  {q:"In the facet platform, network tier is a property of which relationship?",o:["The provider record","The member record","The provider-plan relationship","The group billing account"],a:2},
+  {q:"Which accumulator structure gives each family member their own individual deductible threshold?",o:["Aggregate accumulator","Embedded accumulator","Blended accumulator","Per-member accumulator"],a:1},
+  {q:"What is the maximum waiting period allowed under the ACA for applicable large employers?",o:["30 days","60 days","90 days","120 days"],a:2},
+  {q:"Which CDT code range covers orthodontic services?",o:["D4000 to D4999","D6000 to D6999","D7000 to D7999","D8000 to D8999"],a:3},
+  {q:"A claim denied with CARC 29 indicates which issue?",o:["Member not eligible on date of service","Prior authorization was not obtained","Timely filing limit was exceeded","Claim is a duplicate"],a:2},
+  {q:"The RBRVS fee schedule is used primarily for which type of provider claims?",o:["Institutional inpatient UB-04","Pharmacy NCPDP","Professional services CMS-1500","Dental CDT"],a:2},
+  {q:"What is the federally mandated grace period for ACA marketplace members receiving APTC?",o:["30 days","60 days","90 days","120 days"],a:2},
+  {q:"The birthday rule in COB determines which plan is primary for which population?",o:["Subscribers with Medicare coverage","Dependent children with dual coverage","Employees with two employer plans","Retired members on COBRA"],a:1},
+  {q:"Which federal law governs self-funded employer health plans and preempts state insurance laws for those plans?",o:["ACA","HIPAA","ERISA","No Surprises Act"],a:2},
+  {q:"In the claim adjudication workflow, which step occurs BEFORE benefit application and pricing?",o:["COB calculation","Payment and remittance generation","Clinical and coding edits","Accumulator update"],a:2},
+  {q:"A Type 2 NPI identifies which type of provider?",o:["An individual licensed practitioner","A hospital or organization","A pharmacy benefit manager","A TPA administrator"],a:1},
+  {q:"Which code set is updated each October 1 and governs diagnosis coding on all US claims?",o:["CPT","CDT","ICD-10-CM","HCPCS Level II"],a:2},
+  {q:"The Missing Tooth Clause in dental benefits excludes coverage for teeth that were missing:",o:["Within the last 12 months","At any point in the member's life","Before the effective date of dental coverage","After the plan year begins"],a:2},
+  {q:"HEDIS measures are developed and maintained by which organization?",o:["CMS","AMA","NCQA","ADA"],a:2},
+  {q:"Which environment is used by business users to validate configuration before production deployment?",o:["Development DEV","System Integration Testing SIT","User Acceptance Testing UAT","Quality Assurance QA"],a:2},
+  {q:"CPT codes used in professional claims are updated on which schedule?",o:["October 1 each year","January 1 each year","July 1 each year","April 1 each year"],a:1},
+  {q:"A per diem fee schedule pays a provider based on:",o:["Each individual procedure performed","A fixed amount per diagnosis group","A fixed daily rate regardless of services","A percentage of billed charges"],a:2},
+  {q:"What does the acronym PMPM stand for?",o:["Per Member Per Month","Primary Medical Premium Model","Payer-Managed Plan Metric","Plan Member Payment Method"],a:0},
+  {q:"A DRG-based fee schedule is most commonly used for reimbursing which type of services?",o:["Outpatient professional visits","Pharmacy dispensing","Inpatient hospital stays","Behavioral health outpatient"],a:2},
+  {q:"Under HIPAA, how long must covered entities retain audit logs and security documentation?",o:["3 years","5 years","6 years","10 years"],a:2},
+  {q:"Which claim form is used by hospitals for inpatient facility billing?",o:["CMS-1500","UB-04","NCPDP D.0","ADA Dental Claim Form"],a:1},
+  {q:"The Medical Loss Ratio minimum for large group markets under the ACA is:",o:["75%","80%","85%","90%"],a:2},
+  {q:"What is the primary key used to identify a member throughout the facet platform?",o:["Social Security Number","Subscriber ID","Member ID","Group ID"],a:2},
+  {q:"A COB method where the secondary payer covers only the remaining balance up to its own benefit limit is called:",o:["Non-duplication","Maintenance of benefits","Carve-out","Coordination by subtraction"],a:1},
+  {q:"Which regulatory requirement mandates that Medicare Part D formulary data be updated within how many hours of a formulary change?",o:["12 hours","24 hours","48 hours","72 hours"],a:1},
+  {q:"The No Surprises Act became effective in which year?",o:["2019","2020","2021","2022"],a:3},
+  {q:"In a self-funded ASO plan, who bears the financial risk for member claims?",o:["The TPA","The insurance carrier","The employer","The state insurance department"],a:2},
+  {q:"CARC 197 on a claim denial most commonly indicates:",o:["The member was not eligible","The claim is a duplicate","Prior authorization was required but not obtained","The timely filing limit was exceeded"],a:2},
+  {q:"NUCC taxonomy codes are used in the facet platform to classify:",o:["Diagnosis codes","Drug formulary tiers","Provider specialties","Claim adjustment reasons"],a:2},
+  {q:"Which enrollment module parameter controls how far back an enrollment change can be backdated?",o:["Grace period setting","Open enrollment window","Retroactivity limit","Waiting period rule"],a:2},
+  {q:"Echolink Solutions Training Academy has trained more than how many facet configuration analysts?",o:["100","200","300","500"],a:2},
+  {q:"Which module directly governs the deductible and out-of-pocket maximum rules in the facet platform?",o:["Member module","Provider module","Benefits module","Billing module"],a:2},
+  {q:"The ACA requires that an embedded individual OOP maximum apply to which plans?",o:["All Medicare Advantage plans","All non-grandfathered commercial plans","Self-funded ASO plans only","Medicaid managed care plans only"],a:1},
+  {q:"Frequency limits in dental configuration track which two data points for restorative services?",o:["Provider NPI and claim date","CDT code and tooth number","Member age and diagnosis","Plan year and coverage tier"],a:1},
+  {q:"Which system environment is used only with synthetic data and requires no change management approval?",o:["Production","UAT","SIT","Development DEV"],a:3},
+  {q:"The standard prompt pay turnaround for urgent prior authorization requests under CMS regulations is:",o:["24 hours","48 hours","72 hours","7 days"],a:2},
+  {q:"To request a demo environment from Echolink Solutions, you should contact:",o:["echolinksolutions.com/register","demo@echolinksolutions.com","info@echolinksolutions.com","support@echolinksolutions.com"],a:2},
+  {q:"ICD-10-CM diagnosis codes are updated annually on which date?",o:["January 1","April 1","July 1","October 1"],a:3},
+  {q:"Which of the following correctly describes the TPA role in an ASO arrangement?",o:["The TPA bears the insurance risk for member claims","The TPA provides administrative services without assuming financial risk","The TPA issues coverage under its own insurance license","The TPA is responsible for all regulatory compliance instead of the employer"],a:1}
+];
+
+function buildQuiz(){
+  const form=document.getElementById('quiz-form');
+  form.innerHTML='';
+  questions.forEach((q,i)=>{
+    const d=document.createElement('div');
+    d.className='quiz-q';
+    d.id='q-'+i;
+    d.innerHTML=`<div class="q-num">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div>`+
+      q.o.map((o,j)=>`<div class="quiz-option" id="opt-${i}-${j}"><input type="radio" name="q${i}" value="${j}" id="r${i}${j}" onchange="updateProgress()"><label for="r${i}${j}">${String.fromCharCode(65+j)}. ${o}</label></div>`).join('');
+    form.appendChild(d);
+  });
+}
+
+function updateProgress(){
+  let answered=0;
+  questions.forEach((_,i)=>{if(document.querySelector(`input[name="q${i}"]:checked`)) answered++;});
+  document.getElementById('progress-bar').style.width=(answered/questions.length*100)+'%';
+  document.getElementById('quiz-counter').textContent=`${answered} of ${questions.length} questions answered`;
+}
+
+function submitQuiz(){
+  let score=0;const wrong=[];
+  questions.forEach((q,i)=>{
+    const sel=document.querySelector(`input[name="q${i}"]:checked`);
+    q.o.forEach((_,j)=>{document.getElementById(`opt-${i}-${j}`).classList.remove('correct','incorrect','reveal-correct');});
+    if(sel){
+      const val=parseInt(sel.value);
+      if(val===q.a){score++;document.getElementById(`opt-${i}-${val}`).classList.add('correct');}
+      else{document.getElementById(`opt-${i}-${val}`).classList.add('incorrect');document.getElementById(`opt-${i}-${q.a}`).classList.add('reveal-correct');wrong.push(i+1);}
+    } else {document.getElementById(`opt-${i}-${q.a}`).classList.add('reveal-correct');wrong.push(i+1);}
+  });
+  const pct=Math.round(score/questions.length*100);
+  const pass=score>=32;
+  const el=document.getElementById('quiz-result');
+  el.classList.add('visible');
+  document.getElementById('result-score').textContent=score+'/'+questions.length;
+  document.getElementById('result-score').className='result-score '+(pass?'pass':'fail');
+  document.getElementById('result-label').textContent=pass?'Congratulations, you passed!':'Not quite, keep studying';
+  document.getElementById('result-msg').textContent=pass
+    ?`You scored ${pct}%, exceeding the 80% passing threshold. You have earned Echolink Solutions certification credit for this textbook. Contact info@echolinksolutions.com to receive your certificate of completion.`
+    :`You scored ${pct}%. A score of 80% (32/40) is required to pass. Review the chapters covering your incorrect answers and retake the quiz. Echolink Solutions is here to help. Contact info@echolinksolutions.com for support or to schedule a tutoring session.`;
+  if(wrong.length){document.getElementById('result-review').innerHTML=`<div style="margin-top:1rem;font-size:13.5px;color:var(--muted);font-weight:600">Questions to review: ${wrong.join(', ')}</div>`;}
+  el.scrollIntoView({behavior:'smooth'});
+}
+
+function resetQuiz(){
+  buildQuiz();
+  document.getElementById('quiz-result').classList.remove('visible');
+  document.getElementById('progress-bar').style.width='0%';
+  document.getElementById('quiz-counter').textContent='Answer all 40 questions, then click Submit Quiz';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
