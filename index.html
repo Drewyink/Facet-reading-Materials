@@ -40,7 +40,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);font-size:15.5px;line-height:1.85;color:var(--text2);background:var(--cream);min-height:100vh;font-weight:400}
+body{font-family:var(--body);font-size:16px;line-height:1.85;color:var(--text2);background:var(--cream);min-height:100vh;font-weight:400}
 b,strong{font-weight:700;color:var(--text)}
 
 /* HEADER */
@@ -61,21 +61,21 @@ b,strong{font-weight:700;color:var(--text)}
 .sidebar::-webkit-scrollbar{width:3px}
 .sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
 .sidebar-section-label{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.75rem 1.25rem .3rem;margin-top:.35rem}
-.sidebar a{display:block;padding:.48rem 1.25rem;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.52);text-decoration:none;border-left:3px solid transparent;transition:all .15s;line-height:1.45}
+.sidebar a{display:block;padding:.55rem 1.25rem;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.55);text-decoration:none;border-left:3px solid transparent;transition:all .15s;line-height:1.45}
 .sidebar a:hover{background:rgba(232,82,26,.12);color:var(--orange2);border-left-color:var(--orange)}
 .sidebar a.active{background:rgba(232,82,26,.18);color:white;border-left-color:var(--orange2);font-weight:700}
-.sidebar a .ch-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.25);display:block;margin-bottom:1px}
+.sidebar a .ch-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.28);display:block;margin-bottom:1px}
 .sidebar a.active .ch-label{color:var(--orange2)}
 
 /* MAIN */
-.main{flex:1;padding:2.25rem 2.75rem 5rem;max-width:880px}
+.main{flex:1;padding:2.25rem 2.75rem 5rem;max-width:900px}
 
 /* HERO - only shown in intro */
 .book-hero{background:var(--navy);border-radius:var(--radius-lg);margin-bottom:2.5rem;overflow:hidden;box-shadow:var(--shadow-md)}
 .hero-top{background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);padding:2.25rem 2.5rem;position:relative}
 .hero-top::after{content:'';position:absolute;top:0;right:0;bottom:0;width:40%;background:linear-gradient(135deg,transparent,rgba(232,82,26,.06));pointer-events:none}
-.hero-eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange2);margin-bottom:.6rem}
-.book-hero h1{font-family:var(--display);font-size:34px;font-weight:900;color:white;line-height:1.2;margin-bottom:.65rem}
+.hero-eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange2);margin-bottom:.7rem}
+.book-hero h1{font-family:var(--display);font-size:40px;font-weight:900;color:white;line-height:1.15;margin-bottom:.65rem}
 .book-hero .subtitle{font-size:14.5px;color:rgba(255,255,255,.72);line-height:1.7;max-width:560px;font-weight:400}
 .hero-bottom{background:rgba(0,0,0,.38);padding:1rem 2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.08)}
 .hero-meta-item{font-size:12px;color:rgba(255,255,255,.42)}
@@ -89,14 +89,14 @@ b,strong{font-weight:700;color:var(--text)}
 
 /* CHAPTER HEADER */
 .ch-header{display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:2px solid var(--border2)}
-.ch-num-block{background:var(--orange);color:white;font-family:var(--display);font-size:22px;font-weight:900;min-width:54px;height:54px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ch-meta .ch-label-top{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
-.ch-meta .ch-title{font-family:var(--display);font-size:26px;font-weight:900;color:var(--navy);line-height:1.25}
+.ch-num-block{background:var(--orange);color:white;font-family:var(--display);font-size:28px;font-weight:900;min-width:64px;height:64px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ch-meta .ch-label-top{font-size:16px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;display:block}
+.ch-meta .ch-title{font-family:var(--display);font-size:38px;font-weight:900;color:var(--navy);line-height:1.15}
 
 /* BODY */
 .body-text p{margin-bottom:1.15rem;color:var(--text2);font-weight:400}
-.body-text h3{font-family:var(--display);font-size:18px;font-weight:900;color:var(--navy);margin:2.25rem 0 .65rem;padding-left:1rem;border-left:4px solid var(--orange)}
-.body-text h4{font-size:13.5px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin:1.75rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border2)}
+.body-text h3{font-family:var(--display);font-size:22px;font-weight:900;color:var(--navy);margin:2.25rem 0 .65rem;padding-left:1rem;border-left:5px solid var(--orange)}
+.body-text h4{font-size:15px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin:1.75rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border2)}
 .body-text ul{margin:.5rem 0 1rem 1.5rem}
 .body-text ul li{margin-bottom:.4rem;color:var(--text2);line-height:1.7}
 .body-text ol{margin:.5rem 0 1rem 1.5rem}
@@ -117,8 +117,8 @@ b,strong{font-weight:700;color:var(--text)}
 .table-wrap{overflow-x:auto;margin:1.25rem 0;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 thead tr{background:var(--navy)}
-th{text-align:left;padding:11px 13px;color:white;font-weight:900;font-size:12px;letter-spacing:.05em}
-td{padding:9px 13px;border-bottom:1px solid var(--border2);color:var(--text2);vertical-align:top;font-weight:400}
+th{text-align:left;padding:12px 14px;color:white;font-weight:900;font-size:13px;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--border2);color:var(--text2);vertical-align:top;font-weight:400;font-size:14.5px}
 tr:nth-child(even) td{background:rgba(0,0,0,.018)}
 tr:last-child td{border-bottom:none}
 
@@ -131,7 +131,7 @@ tr:last-child td{border-bottom:none}
 
 /* FIGURES */
 .figure{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:1.75rem 0;box-shadow:var(--shadow-md)}
-.figure-caption{background:var(--navy);color:white;padding:.65rem 1.25rem;font-size:12px;font-weight:900;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.figure-caption{background:var(--navy);color:white;padding:.75rem 1.25rem;font-size:13.5px;font-weight:900;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
 .figure-caption .badge{background:var(--orange);color:white;font-size:10px;font-weight:900;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em}
 .figure-body{padding:1rem 1.25rem}
 
@@ -172,36 +172,36 @@ tr:last-child td{border-bottom:none}
 /* DOMAIN GRID */
 .domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin:1rem 0}
 .domain-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
-.domain-card-head{font-family:var(--display);font-size:13.5px;font-weight:900;margin-bottom:.45rem;padding-bottom:.35rem;border-bottom:2px solid}
+.domain-card-head{font-family:var(--display);font-size:15px;font-weight:900;margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:2px solid}
 .domain-card-body{font-size:12.5px;color:var(--muted);line-height:1.65;font-weight:400}
 
 /* INFO CARDS */
 .info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;margin:1rem 0}
 .info-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
 .info-card .ic-icon{font-size:20px;margin-bottom:.4rem}
-.info-card .ic-title{font-weight:900;color:var(--navy);font-size:14.5px;margin-bottom:.3rem}
+.info-card .ic-title{font-weight:900;color:var(--navy);font-size:16px;margin-bottom:.35rem}
 .info-card .ic-body{font-size:13px;color:var(--muted);line-height:1.65;font-weight:400}
 
 /* STEPS */
 .steps{margin:1rem 0}
 .step{display:flex;gap:1rem;margin-bottom:.875rem;background:white;border:1px solid var(--border);border-radius:var(--radius);padding:.875rem}
 .step-num{width:32px;height:32px;background:var(--orange);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:900;font-size:14px;flex-shrink:0}
-.step-content .step-title{font-weight:900;color:var(--navy);margin-bottom:.2rem;font-size:14.5px}
-.step-content .step-desc{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:400}
+.step-content .step-title{font-weight:900;color:var(--navy);margin-bottom:.25rem;font-size:16px}
+.step-content .step-desc{font-size:15px;color:var(--muted);line-height:1.7;font-weight:400}
 
 /* TOC */
-.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1rem 0}
-.toc-item{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:.875rem 1rem;cursor:pointer;transition:all .15s;text-decoration:none;display:block;border-left:4px solid var(--border)}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:1rem 0}
+.toc-item{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.25rem;cursor:pointer;transition:all .15s;text-decoration:none;display:block;border-left:5px solid var(--border)}
 .toc-item:hover{border-left-color:var(--orange);background:var(--orange-light);box-shadow:var(--shadow)}
-.toc-item .toc-ch{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.15rem}
-.toc-item .toc-name{font-family:var(--display);font-size:14px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.2rem}
-.toc-item .toc-desc{font-size:11.5px;color:var(--faint);line-height:1.5;font-weight:400}
+.toc-item .toc-ch{font-size:16px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:.4rem}
+.toc-item .toc-name{font-family:var(--display);font-size:20px;font-weight:900;color:var(--navy);line-height:1.25;margin-bottom:.3rem}
+.toc-item .toc-desc{font-size:14px;color:var(--faint);line-height:1.55;font-weight:400;margin-top:.25rem}
 
 /* STATS ROW */
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:1.25rem 0}
 .stat-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow)}
-.stat-card .stat-val{font-family:var(--display);font-size:30px;font-weight:900;color:var(--orange);line-height:1.1}
-.stat-card .stat-label{font-size:12px;color:var(--muted);margin-top:.3rem;line-height:1.4;font-weight:600}
+.stat-card .stat-val{font-family:var(--display);font-size:36px;font-weight:900;color:var(--orange);line-height:1.1}
+.stat-card .stat-label{font-size:13.5px;color:var(--muted);margin-top:.3rem;line-height:1.4;font-weight:600}
 
 /* TIER LIST */
 .tier-list{display:flex;flex-direction:column;gap:8px;margin:.75rem 0}
@@ -218,11 +218,11 @@ tr:last-child td{border-bottom:none}
 .quiz-container{margin:1rem 0}
 .quiz-q{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.875rem;box-shadow:var(--shadow)}
 .quiz-q .q-num{font-size:11px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
-.quiz-q .q-text{font-weight:700;color:var(--navy);margin-bottom:.75rem;font-size:14.5px;line-height:1.5}
+.quiz-q .q-text{font-weight:700;color:var(--navy);margin-bottom:.75rem;font-size:16px;line-height:1.55}
 .quiz-option{display:flex;align-items:flex-start;gap:10px;padding:.5rem .75rem;border-radius:4px;cursor:pointer;transition:background .1s;margin-bottom:4px;border:1px solid transparent}
 .quiz-option:hover{background:var(--orange-light);border-color:var(--orange)}
 .quiz-option input{margin-top:3px;accent-color:var(--orange);flex-shrink:0}
-.quiz-option label{font-size:13.5px;color:var(--text2);cursor:pointer;line-height:1.5;font-weight:500}
+.quiz-option label{font-size:15px;color:var(--text2);cursor:pointer;line-height:1.5;font-weight:500}
 .quiz-option.correct{background:#c6f6d5;border-color:#059669}
 .quiz-option.incorrect{background:var(--danger-bg);border-color:#dc2626}
 .quiz-option.reveal-correct{background:#c6f6d5;border-color:#059669}
@@ -244,8 +244,8 @@ tr:last-child td{border-bottom:none}
 /* GLOSSARY */
 .glossary-grid{columns:2;gap:1.5rem;margin:1rem 0}
 .glossary-entry{break-inside:avoid;margin-bottom:1.1rem}
-.glossary-term{font-family:var(--display);font-size:14.5px;font-weight:900;color:var(--navy);border-bottom:1.5px solid var(--border2);padding-bottom:.2rem;margin-bottom:.3rem}
-.glossary-def{font-size:13px;color:var(--muted);line-height:1.65;font-weight:400}
+.glossary-term{font-family:var(--display);font-size:16px;font-weight:900;color:var(--navy);border-bottom:1.5px solid var(--border2);padding-bottom:.25rem;margin-bottom:.35rem}
+.glossary-def{font-size:14px;color:var(--muted);line-height:1.7;font-weight:400}
 
 /* NAV */
 .ch-nav{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border2);gap:12px}
@@ -269,8 +269,102 @@ tr:last-child td{border-bottom:none}
 .key-point .kp-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem}
 .key-point p{margin-bottom:0;font-size:14px}
 
-@media(max-width:860px){.sidebar{display:none}.main{padding:1.5rem 1rem 4rem}.toc-grid{grid-template-columns:1fr}.glossary-grid{columns:1}}
+@media(max-width:860px){
+  .sidebar{display:none}
+  .main{padding:1.25rem 1rem 4rem}
+  .toc-grid{grid-template-columns:1fr}
+  .glossary-grid{columns:1}
+  .book-hero h1{font-size:28px}
+  .ch-meta .ch-title{font-size:24px}
+  .ch-num-block{min-width:50px;height:50px;font-size:22px}
+  .ch-header{gap:.75rem}
+  .domain-grid{grid-template-columns:1fr}
+  .info-cards{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .mock-body{flex-direction:column}
+  .mock-sidebar-nav{width:100%;display:flex;flex-wrap:wrap;padding:.25rem}
+  .mock-sidebar-item{padding:4px 8px;font-size:10px}
+  .hero-bottom{gap:1rem;padding:1rem 1.25rem}
+  .hero-top{padding:1.5rem 1.25rem}
+  .contact-box{flex-direction:column;padding:1.25rem}
+  .ch-nav{flex-direction:column}
+  .ch-nav button{width:100%;text-align:center}
+  .site-header{height:auto;padding:.75rem 1rem;flex-wrap:wrap;gap:.5rem}
+  .header-right{display:none}
+  .header-logo-img{height:36px}
+  .toc-item{padding:1rem}
+  .toc-item .toc-name{font-size:15px}
+  .body-text h3{font-size:19px}
+  .figure-body{padding:.75rem}
+  .mock-grid{grid-template-columns:repeat(2,1fr)}
+  .table-wrap{font-size:13px}
+  th{padding:9px 10px;font-size:12px}
+  td{padding:8px 10px;font-size:13.5px}
+  .quiz-q{padding:1rem}
+  .quiz-option label{font-size:14px}
+  .glossary-grid{column-gap:0}
+  .step{flex-direction:column;gap:.5rem}
+  .step-num{width:36px;height:36px}
+}
+@media(max-width:480px){
+  .book-hero h1{font-size:24px}
+  .ch-meta .ch-title{font-size:20px}
+  .stats-row{grid-template-columns:1fr}
+  .hero-meta-item{font-size:11px}
+  .mock-grid{grid-template-columns:1fr 1fr}
+  .site-footer{flex-direction:column;text-align:center;gap:.35rem}
+}
 @media print{.sidebar,.site-header,.ch-nav,.site-footer{display:none!important}.page{display:block!important;page-break-before:always}.main{padding:0;max-width:100%}}
+
+/* ── HAMBURGER + MOBILE NAV ─────────────────────────── */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:.5rem}
+.hamburger span{display:block;width:24px;height:2.5px;background:white;border-radius:2px;transition:.2s}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:299}
+.mobile-nav-overlay.open{display:block}
+.mobile-nav{position:fixed;top:0;left:-280px;width:280px;height:100vh;background:var(--navy2);overflow-y:auto;z-index:300;transition:left .28s ease;padding-bottom:2rem}
+.mobile-nav.open{left:0}
+.mobile-nav a{display:block;padding:.55rem 1.25rem;font-size:14px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;border-left:3px solid transparent;transition:all .15s;line-height:1.45}
+.mobile-nav a:hover,.mobile-nav a.active{background:rgba(232,82,26,.2);color:white;border-left-color:var(--orange2)}
+.mobile-nav .ch-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.28);display:block;margin-bottom:1px}
+.mobile-nav .sidebar-section-label{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:.75rem 1.25rem .3rem}
+@media(max-width:860px){.hamburger{display:flex}}
+/* ── END HAMBURGER ──────────────────────────────────── */
+
+/* ── BOOK COVER ─────────────────────────────────────── */
+.book-cover{border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);max-width:680px;margin:0 auto}
+.cover-inner{background:linear-gradient(160deg,#0a1628 0%,#0f2460 50%,#1a1a3e 100%);position:relative;min-height:780px;display:flex;flex-direction:column}
+.cover-top-stripe{height:8px;background:linear-gradient(90deg,var(--orange) 0%,var(--orange2) 100%)}
+.cover-logo-wrap{padding:1.75rem 2rem 0}
+.cover-logo{height:52px;border-radius:6px}
+.cover-body{flex:1;padding:2rem 2.5rem}
+.cover-eyebrow{font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--orange2);margin-bottom:1.25rem;opacity:.9}
+.cover-title{font-family:var(--display);font-size:72px;font-weight:900;color:white;line-height:1.0;margin-bottom:.75rem;letter-spacing:-.5px}
+.cover-subtitle{font-size:20px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2rem}
+.cover-divider{height:3px;background:linear-gradient(90deg,var(--orange) 0%,rgba(255,255,255,.1) 100%);margin-bottom:2rem;border-radius:2px;width:120px}
+.cover-edition{display:flex;gap:2.5rem;margin-bottom:2rem}
+.cover-ed-item{display:flex;flex-direction:column;align-items:flex-start}
+.cover-ed-num{font-family:var(--display);font-size:38px;font-weight:900;color:var(--orange);line-height:1}
+.cover-ed-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-top:.1rem}
+.cover-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:.5rem}
+.cover-topics span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.03em}
+.cover-footer{padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.5rem}
+.cover-academy{font-size:14px;font-weight:900;color:white;margin-bottom:.2rem}
+.cover-web{font-size:12px;color:rgba(255,255,255,.45)}
+.cover-footer-right{font-size:12px;color:rgba(255,255,255,.35);font-weight:600}
+@media(max-width:860px){
+  .cover-title{font-size:52px}
+  .cover-body{padding:1.5rem 1.5rem}
+  .cover-logo-wrap{padding:1.25rem 1.5rem 0}
+  .cover-ed-num{font-size:30px}
+  .cover-footer{padding:1.25rem 1.5rem}
+  .cover-inner{min-height:640px}
+}
+@media(max-width:480px){
+  .cover-title{font-size:42px}
+  .cover-subtitle{font-size:16px}
+  .cover-edition{gap:1.5rem}
+}
+/* ── END BOOK COVER ──────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -285,12 +379,41 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
   <div class="header-right">Insurance and Payer Systems<br><a href="mailto:info@echolinksolutions.com">info@echolinksolutions.com</a></div>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.12)">
+    <img src="data:image/png;base64,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" style="height:36px;border-radius:4px" alt="Echolink Solutions">
+    <button onclick="closeMobileNav()" style="background:none;border:none;color:white;font-size:22px;cursor:pointer;padding:4px">&#10005;</button>
+  </div>
+  <div class="sidebar-section-label">Book Navigation</div>
+  <a href="#" onclick="showMobile('cover')" id="mnav-cover"><span class="ch-label">Start</span>Book Cover</a>
+  <a href="#" onclick="showMobile('toc')" id="mnav-toc"><span class="ch-label">Overview</span>Table of Contents</a>
+  <a href="#" onclick="showMobile('intro')" id="mnav-intro"><span class="ch-label">Introduction</span>Introduction to Healthcare Facets</a>
+  <a href="#" onclick="showMobile('ch1')" id="mnav-ch1"><span class="ch-label">Chapter 1</span>US Healthcare Ecosystem</a>
+  <a href="#" onclick="showMobile('ch2')" id="mnav-ch2"><span class="ch-label">Chapter 2</span>Environment and Navigation</a>
+  <a href="#" onclick="showMobile('ch3')" id="mnav-ch3"><span class="ch-label">Chapter 3</span>Member and Enrollment</a>
+  <a href="#" onclick="showMobile('ch4')" id="mnav-ch4"><span class="ch-label">Chapter 4</span>Provider Network</a>
+  <a href="#" onclick="showMobile('ch5')" id="mnav-ch5"><span class="ch-label">Chapter 5</span>Benefits, Pricing and Adjudication</a>
+  <a href="#" onclick="showMobile('ch6')" id="mnav-ch6"><span class="ch-label">Chapter 6</span>Claims Processing and Edits</a>
+  <a href="#" onclick="showMobile('ch7')" id="mnav-ch7"><span class="ch-label">Chapter 7</span>Dental Configuration</a>
+  <a href="#" onclick="showMobile('ch8')" id="mnav-ch8"><span class="ch-label">Chapter 8</span>Billing and Premiums</a>
+  <a href="#" onclick="showMobile('ch9')" id="mnav-ch9"><span class="ch-label">Chapter 9</span>Reporting and Analytics</a>
+  <a href="#" onclick="showMobile('ch10')" id="mnav-ch10"><span class="ch-label">Chapter 10</span>Compliance, Security and Governance</a>
+  <a href="#" onclick="showMobile('conclusion')" id="mnav-conclusion"><span class="ch-label">End</span>Conclusion</a>
+  <a href="#" onclick="showMobile('glossary')" id="mnav-glossary"><span class="ch-label">Reference</span>Glossary of Terms</a>
+  <a href="#" onclick="showMobile('quiz')" id="mnav-quiz"><span class="ch-label">Assessment</span>40-Point Knowledge Quiz</a>
+</nav>
 
 <div class="layout">
 <nav class="sidebar">
   <div class="sidebar-section-label">Book Navigation</div>
-  <a href="#" onclick="show('toc');return false;" class="active" id="nav-toc"><span class="ch-label">Overview</span>Table of Contents</a>
+  <a href="#" onclick="show('cover');return false;" id="nav-cover"><span class="ch-label">Start</span>Book Cover</a>
+  <a href="#" onclick="show('toc');return false;" id="nav-toc"><span class="ch-label">Overview</span>Table of Contents</a>
   <a href="#" onclick="show('intro');return false;" id="nav-intro"><span class="ch-label">Introduction</span>Introduction to Healthcare Facets</a>
   <a href="#" onclick="show('ch1');return false;" id="nav-ch1"><span class="ch-label">Chapter 1</span>US Healthcare Ecosystem</a>
   <a href="#" onclick="show('ch2');return false;" id="nav-ch2"><span class="ch-label">Chapter 2</span>Environment and Navigation</a>
@@ -308,9 +431,47 @@ tr:last-child td{border-bottom:none}
 </nav>
 <main class="main">
 
+<!-- BOOK COVER -->
+<div id="cover" class="page visible">
+  <div class="book-cover">
+    <div class="cover-inner">
+      <div class="cover-top-stripe"></div>
+      <div class="cover-logo-wrap">
+        <img src="data:image/png;base64,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" alt="Echolink Solutions" class="cover-logo">
+      </div>
+      <div class="cover-body">
+        <div class="cover-eyebrow">Training Academy Textbook Series</div>
+        <h1 class="cover-title">Healthcare<br>Facet<br>Configuration</h1>
+        <div class="cover-subtitle">Insurance and Payer Systems</div>
+        <div class="cover-divider"></div>
+        <div class="cover-edition">
+          <div class="cover-ed-item"><span class="cover-ed-num">10</span><span class="cover-ed-label">Chapters</span></div>
+          <div class="cover-ed-item"><span class="cover-ed-num">300+</span><span class="cover-ed-label">Analysts Trained</span></div>
+          <div class="cover-ed-item"><span class="cover-ed-num">50+</span><span class="cover-ed-label">Payer Organizations</span></div>
+        </div>
+        <div class="cover-topics">
+          <span>Member Enrollment</span><span>Provider Networks</span><span>Benefits and Pricing</span>
+          <span>Claims Processing</span><span>Dental</span><span>Billing</span>
+          <span>Reporting</span><span>Compliance</span><span>40-Point Quiz</span>
+        </div>
+      </div>
+      <div class="cover-footer">
+        <div class="cover-footer-left">
+          <div class="cover-academy">Echolink Solutions Training Academy</div>
+          <div class="cover-web">echolinksolutions.com &nbsp;|&nbsp; info@echolinksolutions.com</div>
+        </div>
+        <div class="cover-footer-right">First Edition, 2025</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <button onclick="show('toc')" style="background:var(--orange);color:white;border:none;padding:14px 40px;border-radius:8px;font-size:17px;font-weight:900;font-family:var(--body);cursor:pointer;letter-spacing:.02em">Open Textbook &rarr;</button>
+  </div>
+</div>
+
 <!-- TABLE OF CONTENTS -->
-<div id="toc" class="page visible">
-  <div style="font-family:var(--display);font-size:24px;font-weight:900;color:var(--navy);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--border2)">Table of Contents</div>
+<div id="toc" class="page">
+  <div style="font-family:var(--display);font-size:36px;font-weight:900;color:var(--navy);margin-bottom:1.5rem;padding-bottom:.85rem;border-bottom:3px solid var(--orange)">Table of Contents</div>
   <div class="toc-grid">
     <a class="toc-item" href="#" onclick="show('intro');return false;"><div class="toc-ch">Introduction</div><div class="toc-name">Introduction to Healthcare Facets</div><div class="toc-desc">About Echolink Solutions, program overview, how to use this book</div></a>
     <a class="toc-item" href="#" onclick="show('ch1');return false;"><div class="toc-ch">Chapter 1</div><div class="toc-name">Overview of US Healthcare Ecosystem</div><div class="toc-desc">Payers, providers, TPAs, lines of business and regulatory landscape</div></a>
@@ -1139,7 +1300,7 @@ tr:last-child td{border-bottom:none}
 </footer>
 
 <script>
-const pages=['toc','intro','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','conclusion','glossary','quiz'];
+const pages=['cover','toc','intro','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','conclusion','glossary','quiz'];
 function show(id){
   pages.forEach(p=>{
     const el=document.getElementById(p);
@@ -1251,6 +1412,23 @@ function resetQuiz(){
 }
 
 buildQuiz();
+
+function toggleMobileNav(){
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('mobileNavOverlay').classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('mobileNavOverlay').classList.remove('open');
+}
+function showMobile(id){
+  show(id);
+  closeMobileNav();
+  // update mobile nav active state
+  document.querySelectorAll('.mobile-nav a').forEach(a=>a.classList.remove('active'));
+  const mn=document.getElementById('mnav-'+id);
+  if(mn) mn.classList.add('active');
+}
 </script>
 </body>
 </html>
