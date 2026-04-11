@@ -406,7 +406,7 @@ tr:last-child td{border-bottom:none}
   <a href="#" onclick="showMobile('ch10')" id="mnav-ch10"><span class="ch-label">Chapter 10</span>Compliance, Security and Governance</a>
   <a href="#" onclick="showMobile('conclusion')" id="mnav-conclusion"><span class="ch-label">End</span>Conclusion</a>
   <a href="#" onclick="showMobile('glossary')" id="mnav-glossary"><span class="ch-label">Reference</span>Glossary of Terms</a>
-  <a href="#" onclick="showMobile('quiz')" id="mnav-quiz"><span class="ch-label">Assessment</span>40-Point Knowledge Quiz</a>
+  <a href="#" onclick="showMobile('quiz')" id="mnav-quiz"><span class="ch-label">Assessment</span>50-Point Knowledge Quiz</a>
 </nav>
 
 <div class="layout">
@@ -485,7 +485,7 @@ tr:last-child td{border-bottom:none}
     <a class="toc-item" href="#" onclick="show('ch9');return false;"><div class="toc-ch">Chapter 9</div><div class="toc-name">Reporting and Analytics</div><div class="toc-desc">Operational, financial, member, regulatory and quality reports</div></a>
     <a class="toc-item" href="#" onclick="show('ch10');return false;"><div class="toc-ch">Chapter 10</div><div class="toc-name">Compliance, Security and Governance</div><div class="toc-desc">HIPAA, CMS regulations, RBAC, audit trails, change control</div></a>
     <a class="toc-item" href="#" onclick="show('glossary');return false;"><div class="toc-ch">Reference</div><div class="toc-name">Glossary of Terms</div><div class="toc-desc">60+ definitions covering all facet and healthcare terminology</div></a>
-    <a class="toc-item" href="#" onclick="show('quiz');return false;" style="border-left-color:var(--orange);background:var(--orange-light)"><div class="toc-ch" style="color:var(--orange)">Assessment</div><div class="toc-name">40-Point Knowledge Quiz</div><div class="toc-desc">Test your knowledge. 80% passing score required for certification</div></a>
+    <a class="toc-item" href="#" onclick="show('quiz');return false;" style="border-left-color:var(--orange);background:var(--orange-light)"><div class="toc-ch" style="color:var(--orange)">Assessment</div><div class="toc-name">40-Point Knowledge Quiz</div><div class="toc-desc">Test your knowledge. 84% passing score (42/50) required for certification</div></a>
   </div>
 </div>
 
@@ -1270,9 +1270,9 @@ tr:last-child td{border-bottom:none}
     <div class="ch-meta"><div class="ch-label-top">Assessment</div><div class="ch-title">40-Point Knowledge Quiz</div></div>
   </div>
   <div class="body-text">
-    <div class="callout-info"><strong>Passing score: 80% (32 out of 40 correct)</strong>This quiz covers all 10 chapters plus the introduction. Select the best answer for each question. Submit when complete to see your score, correct answers, and which questions to review. A score of 32 or higher earns Echolink Solutions certification credit for this textbook module.</div>
+    <div class="callout-info"><strong>Passing score: 80% (42 out of 50 correct)</strong>This quiz covers all 10 chapters plus the introduction. Select the best answer for each question. Submit when complete to see your score, correct answers, and which questions to review. A score of 42 or higher earns Echolink Solutions certification credit for this textbook module.</div>
     <div class="quiz-progress"><div class="quiz-progress-bar" id="progress-bar" style="width:0%"></div></div>
-    <div class="quiz-counter" id="quiz-counter">Answer all 40 questions, then click Submit Quiz</div>
+    <div class="quiz-counter" id="quiz-counter">Answer all 50 questions, then click Submit Quiz</div>
     <div class="quiz-container" id="quiz-form"></div>
     <div class="quiz-actions">
       <button class="quiz-btn primary" onclick="submitQuiz()">Submit Quiz</button>
@@ -1316,46 +1316,67 @@ function show(id){
 }
 
 const questions=[
-  {q:"What does the acronym TPA stand for in the healthcare payer context?",o:["Total Plan Administrator","Third-Party Administrator","Tertiary Payer Association","Technical Processing Agency"],a:1},
-  {q:"In the facet platform, network tier is a property of which relationship?",o:["The provider record","The member record","The provider-plan relationship","The group billing account"],a:2},
-  {q:"Which accumulator structure gives each family member their own individual deductible threshold?",o:["Aggregate accumulator","Embedded accumulator","Blended accumulator","Per-member accumulator"],a:1},
-  {q:"What is the maximum waiting period allowed under the ACA for applicable large employers?",o:["30 days","60 days","90 days","120 days"],a:2},
-  {q:"Which CDT code range covers orthodontic services?",o:["D4000 to D4999","D6000 to D6999","D7000 to D7999","D8000 to D8999"],a:3},
-  {q:"A claim denied with CARC 29 indicates which issue?",o:["Member not eligible on date of service","Prior authorization was not obtained","Timely filing limit was exceeded","Claim is a duplicate"],a:2},
-  {q:"The RBRVS fee schedule is used primarily for which type of provider claims?",o:["Institutional inpatient UB-04","Pharmacy NCPDP","Professional services CMS-1500","Dental CDT"],a:2},
-  {q:"What is the federally mandated grace period for ACA marketplace members receiving APTC?",o:["30 days","60 days","90 days","120 days"],a:2},
-  {q:"The birthday rule in COB determines which plan is primary for which population?",o:["Subscribers with Medicare coverage","Dependent children with dual coverage","Employees with two employer plans","Retired members on COBRA"],a:1},
-  {q:"Which federal law governs self-funded employer health plans and preempts state insurance laws for those plans?",o:["ACA","HIPAA","ERISA","No Surprises Act"],a:2},
-  {q:"In the claim adjudication workflow, which step occurs BEFORE benefit application and pricing?",o:["COB calculation","Payment and remittance generation","Clinical and coding edits","Accumulator update"],a:2},
-  {q:"A Type 2 NPI identifies which type of provider?",o:["An individual licensed practitioner","A hospital or organization","A pharmacy benefit manager","A TPA administrator"],a:1},
-  {q:"Which code set is updated each October 1 and governs diagnosis coding on all US claims?",o:["CPT","CDT","ICD-10-CM","HCPCS Level II"],a:2},
-  {q:"The Missing Tooth Clause in dental benefits excludes coverage for teeth that were missing:",o:["Within the last 12 months","At any point in the member's life","Before the effective date of dental coverage","After the plan year begins"],a:2},
-  {q:"HEDIS measures are developed and maintained by which organization?",o:["CMS","AMA","NCQA","ADA"],a:2},
-  {q:"Which environment is used by business users to validate configuration before production deployment?",o:["Development DEV","System Integration Testing SIT","User Acceptance Testing UAT","Quality Assurance QA"],a:2},
-  {q:"CPT codes used in professional claims are updated on which schedule?",o:["October 1 each year","January 1 each year","July 1 each year","April 1 each year"],a:1},
-  {q:"A per diem fee schedule pays a provider based on:",o:["Each individual procedure performed","A fixed amount per diagnosis group","A fixed daily rate regardless of services","A percentage of billed charges"],a:2},
-  {q:"What does the acronym PMPM stand for?",o:["Per Member Per Month","Primary Medical Premium Model","Payer-Managed Plan Metric","Plan Member Payment Method"],a:0},
-  {q:"A DRG-based fee schedule is most commonly used for reimbursing which type of services?",o:["Outpatient professional visits","Pharmacy dispensing","Inpatient hospital stays","Behavioral health outpatient"],a:2},
-  {q:"Under HIPAA, how long must covered entities retain audit logs and security documentation?",o:["3 years","5 years","6 years","10 years"],a:2},
-  {q:"Which claim form is used by hospitals for inpatient facility billing?",o:["CMS-1500","UB-04","NCPDP D.0","ADA Dental Claim Form"],a:1},
-  {q:"The Medical Loss Ratio minimum for large group markets under the ACA is:",o:["75%","80%","85%","90%"],a:2},
-  {q:"What is the primary key used to identify a member throughout the facet platform?",o:["Social Security Number","Subscriber ID","Member ID","Group ID"],a:2},
-  {q:"A COB method where the secondary payer covers only the remaining balance up to its own benefit limit is called:",o:["Non-duplication","Maintenance of benefits","Carve-out","Coordination by subtraction"],a:1},
-  {q:"Which regulatory requirement mandates that Medicare Part D formulary data be updated within how many hours of a formulary change?",o:["12 hours","24 hours","48 hours","72 hours"],a:1},
-  {q:"The No Surprises Act became effective in which year?",o:["2019","2020","2021","2022"],a:3},
-  {q:"In a self-funded ASO plan, who bears the financial risk for member claims?",o:["The TPA","The insurance carrier","The employer","The state insurance department"],a:2},
-  {q:"CARC 197 on a claim denial most commonly indicates:",o:["The member was not eligible","The claim is a duplicate","Prior authorization was required but not obtained","The timely filing limit was exceeded"],a:2},
-  {q:"NUCC taxonomy codes are used in the facet platform to classify:",o:["Diagnosis codes","Drug formulary tiers","Provider specialties","Claim adjustment reasons"],a:2},
-  {q:"Which enrollment module parameter controls how far back an enrollment change can be backdated?",o:["Grace period setting","Open enrollment window","Retroactivity limit","Waiting period rule"],a:2},
-  {q:"Echolink Solutions Training Academy has trained more than how many facet configuration analysts?",o:["100","200","300","500"],a:2},
-  {q:"Which module directly governs the deductible and out-of-pocket maximum rules in the facet platform?",o:["Member module","Provider module","Benefits module","Billing module"],a:2},
-  {q:"The ACA requires that an embedded individual OOP maximum apply to which plans?",o:["All Medicare Advantage plans","All non-grandfathered commercial plans","Self-funded ASO plans only","Medicaid managed care plans only"],a:1},
-  {q:"Frequency limits in dental configuration track which two data points for restorative services?",o:["Provider NPI and claim date","CDT code and tooth number","Member age and diagnosis","Plan year and coverage tier"],a:1},
-  {q:"Which system environment is used only with synthetic data and requires no change management approval?",o:["Production","UAT","SIT","Development DEV"],a:3},
-  {q:"The standard prompt pay turnaround for urgent prior authorization requests under CMS regulations is:",o:["24 hours","48 hours","72 hours","7 days"],a:2},
-  {q:"To request a demo environment from Echolink Solutions, you should contact:",o:["echolinksolutions.com/register","demo@echolinksolutions.com","info@echolinksolutions.com","support@echolinksolutions.com"],a:2},
-  {q:"ICD-10-CM diagnosis codes are updated annually on which date?",o:["January 1","April 1","July 1","October 1"],a:3},
-  {q:"Which of the following correctly describes the TPA role in an ASO arrangement?",o:["The TPA bears the insurance risk for member claims","The TPA provides administrative services without assuming financial risk","The TPA issues coverage under its own insurance license","The TPA is responsible for all regulatory compliance instead of the employer"],a:1}
+  // ─── GROUPS & EMPLOYERS ───────────────────────────────────────────────────
+  {q:"In Facets, which module is used to set up subscriber classes, eligibility tiers, and contribution overrides for an employer group?",o:["Products","Plans","Classes","Benefits"],a:2},
+  {q:"When configuring a new employer group in Facets, which field determines how long a new hire must wait before becoming eligible for coverage?",o:["COB Order","Contribution Percentage","Waiting Period (days)","Coverage Tier"],a:2},
+  {q:"In Facets, COBRA eligibility is configured at which level?",o:["Member level","Plan level","Class level","Benefit level"],a:2},
+  {q:"Which Facets module links an employer's group contract to the plans and benefits available to their employees?",o:["Groups / Employers","Service Groups","NetworX Pricing","Audit Log"],a:0},
+  // ─── MEMBERS & ENROLLMENT ────────────────────────────────────────────────
+  {q:"In Facets, which coverage tier code represents Employee plus Spouse?",o:["EE","EC","ES","FAM"],a:2},
+  {q:"When enrolling a new member in Facets, which field links the member to their employer's benefit structure?",o:["PCP Name","Employee Class","COB Order","Coverage Term Date"],a:1},
+  {q:"A member who has other health insurance on file is noted in Facets using which field?",o:["Medicare Eligible","OHI on file","COB Primary","Secondary Payer"],a:1},
+  {q:"In Facets, which employment type would you select for a member continuing coverage after leaving employment?",o:["Full-Time Employee","Retiree","Union Member","COBRA Continuant"],a:3},
+  {q:"Which Facets field captures the date a member's coverage ends?",o:["Hire Date","Coverage Effective Date","Coverage Term Date","Enrollment Date"],a:2},
+  {q:"When a dependent needs to be added to a member's plan in Facets, what three pieces of information are required at minimum?",o:["NPI, DOB, and gender","Name, relationship, and date of birth","SSN, address, and employer","Plan code, tier, and effective date"],a:1},
+  {q:"In Facets member enrollment, setting COB Order to 'Secondary, Order 2' means the plan will pay:",o:["Before any other insurance","After another carrier pays primary","Only if the member has Medicare","Only for pharmacy claims"],a:1},
+  {q:"Which Facets field identifies whether a member qualifies for Medicare enrollment?",o:["OHI on file","Medicare Eligible","Government Program","Medicaid ID"],a:1},
+  // ─── US HEALTHCARE SYSTEM ─────────────────────────────────────────────────
+  {q:"In Facets, a self-funded employer group uses which contract arrangement where the platform administers claims but the employer bears financial risk?",o:["Fully insured","ASO (Administrative Services Only)","Medicare Advantage","CHIP"],a:1},
+  {q:"Which US healthcare program is administered through Facets for low-income individuals and families, with configuration including state-specific carve-outs?",o:["COBRA","Medicare Part D","Medicaid Managed Care","ERISA self-funded"],a:2},
+  {q:"In Facets, which line of business requires configuration of a FIDE SNP designation and LTSS carve-outs?",o:["Commercial fully insured","Medicaid Managed Care","Medicare Part D","ACA Marketplace"],a:1},
+  // ─── PLANS & PRODUCTS ────────────────────────────────────────────────────
+  {q:"In Facets, what is the correct hierarchy from broadest to most specific for plan configuration?",o:["Benefit, Plan, Product","Product, Plan, Benefit","Plan, Product, Benefit","Class, Product, Benefit"],a:1},
+  {q:"In Facets, which module would you navigate to in order to configure an accumulator structure such as embedded versus aggregate deductibles?",o:["Service Groups","Plans","Pricing","Classes"],a:1},
+  {q:"In Facets, the Plans module links to which two other modules to define what services are covered and what they cost?",o:["Members and Providers","Benefits and Pricing","Groups and Classes","Claims and Authorizations"],a:1},
+  // ─── BENEFITS ────────────────────────────────────────────────────────────
+  {q:"In Facets, which module defines cost-sharing rules such as copays, coinsurance, and deductible applicability at the service category level?",o:["Pricing","Plans","Benefits","Service Groups"],a:2},
+  {q:"In Facets, a Benefit Line that has 'Deductible Applies: No' and '100% coverage' would typically be assigned to which service type?",o:["Inpatient surgery","Specialty pharmacy","Preventive / wellness services","Out-of-network specialist"],a:2},
+  {q:"Which Facets module is used to group related procedure codes into categories for benefit application during claims adjudication?",o:["Fee Tables","Service Groups","NetworX Pricing","Audit Log"],a:1},
+  {q:"In Facets benefits configuration, prior authorization requirements are configured at which level?",o:["Group level","Member level","Benefit line level","Provider contract level"],a:2},
+  // ─── PRICING & FEE TABLES ─────────────────────────────────────────────────
+  {q:"In Facets, which fee table type is based on Relative Value Units multiplied by a conversion factor?",o:["DRG","UCR Dental","NetworX","RBRVS"],a:3},
+  {q:"Which Facets fee table type is used to reimburse hospitals a fixed payment per inpatient discharge based on diagnosis?",o:["RBRVS","DRG","Per Diem","UCR Dental"],a:1},
+  {q:"In Facets, the NetworX Pricing module is used to configure:",o:["Government program eligibility rules","Network-specific contracted reimbursement rates","Member premium billing schedules","Dental frequency limitations"],a:1},
+  {q:"In Facets Fee Tables, the 'Locality' field is used to apply which type of adjustment to a fee schedule?",o:["Age-band rating adjustment","Geographic GPCI adjustment","COB coordination method","Stop-loss threshold"],a:1},
+  {q:"In Facets, which fee table type would you configure to pay a skilled nursing facility a flat rate per day of stay?",o:["RBRVS","DRG","Per Diem","UCR Dental"],a:2},
+  {q:"When configuring a Fee Table in Facets, the 'Conversion Factor' field multiplies against which value to calculate the allowed amount for a professional claim?",o:["Billed charge","Relative Value Units (RVUs)","DRG weight","UCR percentile"],a:1},
+  // ─── CLAIMS ──────────────────────────────────────────────────────────────
+  {q:"In Facets claims configuration, which claim type corresponds to services billed by a physician using a CMS-1500 form?",o:["Medical, Inpatient Hospital","Medical, Primary Care Visit","Dental, Preventive","Pharmacy, Specialty Rx"],a:1},
+  {q:"In Facets, a claim with status 'Pending' means:",o:["The claim has been paid in full","The claim has been denied","The claim is awaiting adjudication or additional review","The claim was rejected at intake"],a:2},
+  {q:"In the Facets claims module, the 'Allowed Amount' field represents:",o:["The amount the member owes after coinsurance","The provider's submitted charge","The maximum the plan will reimburse based on the fee schedule","The amount paid to the provider after deductible"],a:2},
+  {q:"Which Facets claims field must be set to 'Yes' or 'N/A' before a claim requiring prior authorization can be adjudicated as paid?",o:["COB Order","PA On File","OHI on file","Benefit Line Active"],a:1},
+  {q:"In Facets, when a claim has the status 'In Review', what should the analyst do next?",o:["Immediately mark the claim as denied","Verify eligibility, benefits, and PA status before making a determination","Delete the claim and ask the provider to resubmit","Auto-approve the claim if the member is active"],a:1},
+  {q:"In Facets claims, which ICD code set is used to enter the diagnosis code on a medical claim?",o:["CPT","CDT","ICD-10","HCPCS Level II"],a:2},
+  {q:"A Facets claim for 'Pharmacy, Brand Rx' would require which code in the procedure field?",o:["CPT code","ICD-10 code","NDC or HCPCS drug code","CDT code"],a:2},
+  // ─── CLAIM PENDS ─────────────────────────────────────────────────────────
+  {q:"In Facets, Claim Pends are used when a claim requires which action before it can be adjudicated?",o:["Immediate payment to the provider","Additional information or review before a final determination","Automatic denial without further review","Retroactive termination of the member"],a:1},
+  // ─── AUTHORIZATIONS ──────────────────────────────────────────────────────
+  {q:"In Facets Authorizations, which urgency level requires a UM decision within 72 hours?",o:["Routine","Urgent","Emergent","Standard"],a:1},
+  {q:"In Facets, which authorization type would be selected for a member needing an MRI of the knee?",o:["Home Health","Specialty Referral","Advanced Imaging (MRI/CT)","Inpatient Admission"],a:2},
+  {q:"In Facets Authorizations, a UM Decision of 'Partial Approval' means:",o:["The full request was approved","Some but not all units or services requested were approved","The request was denied and will not be reconsidered","The authorization expired before a decision was made"],a:1},
+  {q:"Which denial reason code in Facets Authorizations would apply when a less costly treatment should have been attempted before the requested service?",o:["Not a Covered Benefit","Step Therapy Required First","Out-of-Network, No OON Benefit","Duplicate Request"],a:1},
+  {q:"In Facets, an authorization with urgency 'Emergent' must receive a UM decision within:",o:["7 calendar days","72 hours","24 hours or concurrently","14 days"],a:2},
+  {q:"When a Facets authorization status is set to 'Voided', this means:",o:["The authorization was approved and used","The authorization was cancelled and should not be used for claims","The authorization is pending a clinical review","The authorization expired due to inactivity"],a:1},
+  // ─── DENTAL ──────────────────────────────────────────────────────────────
+  {q:"In Facets Dental configuration, which code set is used to identify dental procedures for billing and adjudication?",o:["CPT","ICD-10","CDT (Current Dental Terminology)","HCPCS Level II"],a:2},
+  {q:"In Facets, a dental claim for 'D1110, Adult Prophylaxis' would fall under which coverage category?",o:["Major Restorative","Basic Restorative","Preventive","Endodontics"],a:2},
+  {q:"In Facets dental configuration, frequency limitations are tracked at which level for restorative services?",o:["Plan year only","Member level by CDT code and tooth number","Provider level by specialty","Group level by employer class"],a:1},
+  {q:"In Facets, the Missing Tooth Clause (MTC) is configured to deny which category of dental claims?",o:["Preventive cleanings and exams","Prosthodontic replacement services for teeth absent before coverage","All endodontic (root canal) procedures","Orthodontic services for adult members"],a:1},
+  // ─── COMPLIANCE, SECURITY & AUDIT ────────────────────────────────────────
+  {q:"In Facets, which module provides a complete log of all user actions, record changes, and system events for HIPAA audit purposes?",o:["SQL Validator","Claims Pends","Audit Log","NetworX Pricing"],a:2},
+  {q:"In Facets, role-based access control ensures that each user can only access:",o:["All modules regardless of job function","The data and functions required for their assigned role","Only read-only views of all records","Only the Claims and Members modules"],a:1},
+  {q:"Which Facets module allows an analyst to write and test SQL queries against the platform database in a sandbox environment?",o:["Audit Log","SQL Validator","NetworX Pricing","Service Groups"],a:1},
+  {q:"In Facets, configuration changes in the production environment must be preceded by testing in which sequence of environments?",o:["UAT only","DEV, then SIT, then UAT","SIT only, then Production","Production can be updated directly with manager approval"],a:1},
 ];
 
 function buildQuiz(){
@@ -1390,7 +1411,7 @@ function submitQuiz(){
     } else {document.getElementById(`opt-${i}-${q.a}`).classList.add('reveal-correct');wrong.push(i+1);}
   });
   const pct=Math.round(score/questions.length*100);
-  const pass=score>=32;
+  const pass=score>=42;
   const el=document.getElementById('quiz-result');
   el.classList.add('visible');
   document.getElementById('result-score').textContent=score+'/'+questions.length;
@@ -1398,7 +1419,7 @@ function submitQuiz(){
   document.getElementById('result-label').textContent=pass?'Congratulations, you passed!':'Not quite, keep studying';
   document.getElementById('result-msg').textContent=pass
     ?`You scored ${pct}%, exceeding the 80% passing threshold. You have earned Echolink Solutions certification credit for this textbook. Contact info@echolinksolutions.com to receive your certificate of completion.`
-    :`You scored ${pct}%. A score of 80% (32/40) is required to pass. Review the chapters covering your incorrect answers and retake the quiz. Echolink Solutions is here to help. Contact info@echolinksolutions.com for support or to schedule a tutoring session.`;
+    :`You scored ${pct}%. A score of 80% (42/50) is required to pass. Review the chapters covering your incorrect answers and retake the quiz. Echolink Solutions is here to help. Contact info@echolinksolutions.com for support or to schedule a tutoring session.`;
   if(wrong.length){document.getElementById('result-review').innerHTML=`<div style="margin-top:1rem;font-size:13.5px;color:var(--muted);font-weight:600">Questions to review: ${wrong.join(', ')}</div>`;}
   el.scrollIntoView({behavior:'smooth'});
 }
@@ -1407,7 +1428,7 @@ function resetQuiz(){
   buildQuiz();
   document.getElementById('quiz-result').classList.remove('visible');
   document.getElementById('progress-bar').style.width='0%';
-  document.getElementById('quiz-counter').textContent='Answer all 40 questions, then click Submit Quiz';
+  document.getElementById('quiz-counter').textContent='Answer all 50 questions, then click Submit Quiz';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
